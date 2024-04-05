@@ -11,6 +11,9 @@ from Auput.utils.decorators import AdminRightsCheck
 # Commands
 STOP_COMMAND = get_command("STOP_COMMAND")
 
+@app.on_message(filters.command(["انهاء","ايقاف"],"")
+& filters.group
+    & ~BANNED_USERS
 
 @app.on_message(
     filters.command(STOP_COMMAND)
