@@ -1,5 +1,16 @@
 import os
 import re
+import requests
+
+import aiohttp
+import aiofiles
+from yt_dlp import YoutubeDL
+from pyrogram import Client, filters
+from pyrogram.types import Message, InputTextMessageContent
+from youtube_search import YoutubeSearch
+
+from Auput import app
+
 
 import yt_dlp
 from pykeyboard import InlineKeyboard
@@ -16,6 +27,15 @@ from Auput import YouTube, app
 from Auput.utils.decorators.language import language, languageCB
 from Auput.utils.formatters import convert_bytes
 from Auput.utils.inline.song import song_markup
+
+
+
+#command
+
+def remove_if_exists(path):
+    if os.path.exists(path):
+        os.remove(path)
+
 
 # Command
 SONG_COMMAND = get_command("SONG_COMMAND")
