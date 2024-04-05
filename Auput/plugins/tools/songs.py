@@ -20,27 +20,15 @@ from Auput.utils.inline.song import song_markup
 # Command
 SONG_COMMAND = get_command("SONG_COMMAND")
 
-
-# Command
-SONG_COMMAND = get_command("SONG_COMMAND")
-
-
-
-
-
-# Song Module
-
-
 @app.on_message(
     filters.command(["/song","تحميل","يوتيوب"],"")
     & filters.private
-    & ~filters.edited
+    & ~filters.group
     & ~BANNED_USERS
 )
 @app.on_message(
     filters.command(["/song","تحميل","يوتيوب"],"")
     & filters.group
-    & ~filters.edited
     & ~BANNED_USERS
 )
 @language
