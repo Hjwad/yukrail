@@ -1,74 +1,119 @@
-from pyrogram.types import (InlineKeyboardButton,
-                            InlineKeyboardMarkup,
-                            InlineQueryResultPhoto)
-from youtubesearchpython.__future__ import VideosSearch
+from typing import Union
 
-from config import BANNED_USERS, MUSIC_BOT_NAME
+from pyrogram import filters, types
+from pyrogram.types import InlineKeyboardMarkup, Message
+
+from config import BANNED_USERS, START_IMG_URL
+from strings import get_command, get_string, helpers
 from Auput import app
-from Auput.utils.inlinequery import answer
+from Auput.misc import SUDOERS
+from Auput.utils import first_page, second_page
+from Auput.utils.database import get_lang, is_commanddelete_on
+from Auput.utils.decorators.language import (LanguageStart,
+                                                  languageCB)
+from Auput.utils.inline.help import (help_back_markup,
+                                          private_help_panel)
+
+### Command
+HELP_COMMAND = get_command("HELP_COMMAND")
 
 
-@app.on_inline_query(~BANNED_USERS)
-async def inline_query_handler(client, query):
-    text = query.query.strip().lower()
-    answers = []
-    if text.strip() == "":
+@app.on_message(
+    filters.command(HELP_COMMAND)
+    & filters.private
+    & ~BANNED_USERS
+)
+@app.on_callback_query(
+    filters.regex("settings_back_helper") & ~BANNED_USERS
+)
+async def helper_private(
+    client: app, update: Union[types.Message, types.CallbackQuery]
+):
+    is_callback = isinstance(update, types.CallbackQuery)
+    if is_callback:
         try:
-            await client.answer_inline_query(
-                query.id, results=answer, cache_time=10
-            )
+            await update.answer()
         except:
-            return
+            pass
+        chat_id = update.message.chat.id
+        language = await get_lang(chat_id)
+        _ = get_string(language)
+        keyboard = first_page(_)
+        await update.edit_message_text(
+            _["help_1"], reply_markup=keyboard
+        )
     else:
-        a = VideosSearch(text, limit=20)
-        result = (await a.next()).get("result")
-        for x in range(15):
-            title = (result[x]["title"]).title()
-            duration = result[x]["duration"]
-            views = result[x]["viewCount"]["short"]
-            thumbnail = result[x]["thumbnails"][0]["url"].split("?")[
-                0
-            ]
-            channellink = result[x]["channel"]["link"]
-            channel = result[x]["channel"]["name"]
-            link = result[x]["link"]
-            published = result[x]["publishedTime"]
-            description = f"{views} | {duration} Mins | {channel}  | {published}"
-            buttons = InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(
-                            text="🎥 Watch on Youtube",
-                            url=link,
-                        )
-                    ],
-                ]
-            )
-            searched_text = f"""
-❇️**Title:** [{title}]({link})
-
-⏳**Duration:** {duration} Mins
-👀**Views:** `{views}`
-⏰**Published Time:** {published}
-🎥**Channel Name:** {channel}
-📎**Channel Link:** [Visit From Here]({channellink})
-
-__Reply with /play on this searched message to stream it on voice chat.__
-
-⚡️ ** Inline Search By {MUSIC_BOT_NAME} **"""
-            answers.append(
-                InlineQueryResultPhoto(
-                    photo_url=thumbnail,
-                    title=title,
-                    thumb_url=thumbnail,
-                    description=description,
-                    caption=searched_text,
-                    reply_markup=buttons,
-                )
-            )
         try:
-            return await client.answer_inline_query(
-                query.id, results=answers
-            )
+            await update.delete()
         except:
-            return
+            pass
+        language = await get_lang(update.chat.id)
+        _ = get_string(language)
+        keyboard = first_page(_)
+        await update.reply_photo(
+            photo=START_IMG_URL,
+            caption=_["help_1"],
+            reply_markup=keyboard,
+)
+
+
+@app.on_message(
+    filters.command(HELP_COMMAND)
+    & filters.group
+    & ~BANNED_USERS
+)
+@LanguageStart
+async def help_com_group(client, message: Message, _):
+    keyboard = private_help_panel(_)
+    await message.reply_text(
+        _["help_2"], reply_markup=InlineKeyboardMarkup(keyboard)
+    )
+
+
+@app.on_callback_query(filters.regex("help_callback") & ~BANNED_USERS)
+@languageCB
+async def helper_cb(client, CallbackQuery, _):
+    callback_data = CallbackQuery.data.strip()
+    cb = callback_data.split(None, 1)[1]
+    keyboard = help_back_markup(_)
+    if cb == "hb1":
+        await CallbackQuery.edit_message_text(helpers.HELP_1, reply_markup=keyboard)
+    elif cb == "hb2":
+        await CallbackQuery.edit_message_text(helpers.HELP_2, reply_markup=keyboard)
+    elif cb == "hb3":
+        await CallbackQuery.edit_message_text(helpers.HELP_3, reply_markup=keyboard)
+    elif cb == "hb4":
+        await CallbackQuery.edit_message_text(helpers.HELP_4, reply_markup=keyboard)
+    elif cb == "hb5":
+        await CallbackQuery.edit_message_text(helpers.HELP_5, reply_markup=keyboard)
+    elif cb == "hb6":
+        await CallbackQuery.edit_message_text(helpers.HELP_6, reply_markup=keyboard)
+    elif cb == "hb7":
+        await CallbackQuery.edit_message_text(helpers.HELP_7, reply_markup=keyboard)
+    elif cb == "hb8":
+        await CallbackQuery.edit_message_text(helpers.HELP_8, reply_markup=keyboard)
+    elif cb == "hb9":
+        await CallbackQuery.edit_message_text(helpers.HELP_9, reply_markup=keyboard)
+    elif cb == "hb10":
+        await CallbackQuery.edit_message_text(helpers.HELP_10, reply_markup=keyboard)
+    elif cb == "hb11":
+        await CallbackQuery.edit_message_text(helpers.HELP_11, reply_markup=keyboard)
+    elif cb == "hb12":
+        await CallbackQuery.edit_message_text(helpers.HELP_12, reply_markup=keyboard)
+    elif cb == "hb13":
+        await CallbackQuery.edit_message_text(helpers.HELP_13, reply_markup=keyboard)
+    elif cb == "hb14":
+        await CallbackQuery.edit_message_text(helpers.HELP_14, reply_markup=keyboard)
+    elif cb == "hb15":
+        await CallbackQuery.edit_message_text(helpers.HELP_15, reply_markup=keyboard)
+
+
+@app.on_callback_query(filters.regex("AuputSecpg") & ~BANNED_USERS)
+@languageCB
+async def first_pagexx(client, CallbackQuery, _):
+    menu_next = second_page(_)
+    try:
+        await CallbackQuery.message.edit_text(_["help_1"], reply_markup=menu_next)
+        return
+    except:
+        return
