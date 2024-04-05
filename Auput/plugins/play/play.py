@@ -35,6 +35,12 @@ PLAY_COMMAND = get_command("PLAY_COMMAND")
     & filters.group
     & ~BANNED_USERS
 )
+
+@app.on_message(filters.command(["شغل","تشغيل","ش"],"")
+& filters.group
+& ~filters.edited
+& ~BANNED_USERS)
+
 @PlayWrapper
 async def play_commnd(
     client,
