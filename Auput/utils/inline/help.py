@@ -13,6 +13,7 @@ def first_page(_):
 			[InlineKeyboardButton(text=_["H_B_4"], callback_data="help_callback hb4"), InlineKeyboardButton(text=_["H_B_5"], callback_data="help_callback hb5"),InlineKeyboardButton(text=_["H_B_6"], callback_data="help_callback hb6")],
 InlineKeyboardButton(text=_["H_B_8"], callback_data="help_callback hb8")],
 			controll_button,
+			]
 	)
 	return first_page_menu
 
