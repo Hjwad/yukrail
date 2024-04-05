@@ -17,10 +17,6 @@ UNMUTE_COMMAND = get_command("UNMUTE_COMMAND")
     & filters.group
     & ~BANNED_USERS
 )
-
-@app.on_message(filters.command(["انهاء","ايقاف"],"")
-& filters.group
-    & ~BANNED_USERS
     
 @AdminRightsCheck
 async def unmute_admin(Client, message: Message, _, chat_id):
