@@ -18,16 +18,15 @@ from Auput.utils.formatters import convert_bytes
 from Auput.utils.inline.song import song_markup
 
 # Command
-SONG_COMMAND = get_command("SONG_COMMAND")
 
 @app.on_message(
-    filters.command(["/song","تحميل","يوتيوب"],"")
+    filters.command(["/sssssssss"],"")
     & filters.private
     & ~filters.group
     & ~BANNED_USERS
 )
 @app.on_message(
-    filters.command(["/song","تحميل","يوتيوب"],"")
+    filters.command(["/ssssssss"],"")
     & filters.group
     & ~BANNED_USERS
 )
