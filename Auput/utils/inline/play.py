@@ -1,3 +1,25 @@
+if 0 < umm <= 10:
+        bar = "⦷─────────"
+    elif 10 < umm < 20:
+        bar = "─⦷────────"
+    elif 20 <= umm < 30:
+        bar = "──⦷───────"
+    elif 30 <= umm < 40:
+        bar = "───⦷──────"
+    elif 40 <= umm < 50:
+        bar = "────⦷─────"
+    elif 50 <= umm < 60:
+        bar = "─────⦷────"
+    elif 60 <= umm < 70:
+        bar = "──────⦷───"
+    elif 70 <= umm < 80:
+        bar = "───────⦷──"
+    elif 80 <= umm < 95:
+        bar = "────────⦷─"
+    else:
+        bar = "─────────⦷"
+
+
 import random
 import math
 import config
@@ -16,27 +38,27 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
     percentage = (played_sec / duration_sec) * 100
     Uputt = math.floor(percentage)
     if 0 < Uputt <= 10:
-        bar = "✄·─·─·─·─·─·─·─·─·─"
+        bar = "⦷─────────"
     elif 10 < Uputt < 20:
-        bar = "-ˋˏ✄·─·─·─·─·─·─·─·─"
+        bar = "─⦷────────"
     elif 20 <= Uputt < 30:
-        bar = "-ˋˏ-ˋˏ✄·─·─·─·─·─·─·─"
+        bar = "──⦷───────"
     elif 30 <= Uputt < 40:
-        bar = "-ˋˏ-ˋˏ-ˋˏ✄·─·─·─·─·─·─"
+        bar = "───⦷──────"
     elif 40 <= Uputt < 50:
-        bar = "-ˋˏ-ˋˏ-ˋˏ-ˋˏ✄·─·─·─·─·─"
+        bar = "────⦷─────"
     elif 50 <= Uputt < 60:
-        bar = "-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ✄·─·─·─·─"
+        bar = "─────⦷────"
     elif 60 <= Uputt < 70:
-        bar = "-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ✄·─·─·─"
+        bar = "──────⦷───"
     elif 70 <= Uputt < 80:
-        bar = "-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ✄·─·─"
+        bar = "───────⦷──"
     elif 80 <= Uputt < 95:
-        bar = "-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ✄·─"
+        bar = "────────⦷─"
     elif 95 <= Uputt < 100:
-        bar = "-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ✄·"
+        bar = "─────────⦷─"
     else:
-        bar = "-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ✄"
+        bar = "───────────⦷"
 
     buttons = [
         [
