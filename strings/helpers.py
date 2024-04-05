@@ -3,14 +3,23 @@ HELP_1 = """✅**<u>Admin Commands:</u>**
 **c** stands for channel play.
 
 /pause or /cpause - Pause the playing music.
+وقف - لأيقاف الب مؤقت .
 /resume or /cresume- Resume the paused music.
+استمر - لأعاده تسغيل البث .  
 /mute or /cmute- Mute the playing music.
+ميوت - كتم البث .
 /unmute or /cunmute- Unmute the muted music.
+الغاء الميوت - لفتح كتم البث .
 /skip or /cskip- Skip the current playing music.
+تخطي - لتخطي الاغنيه .
 /stop or /cstop- Stop the playing music.
+ايقاف - لأيقاف البث .
 /shuffle or /cshuffle- Randomly shuffles the queued playlist.
+خلط - لتشغيل البث بشكل عشوائي .
 /seek or /cseek - Forward Seek the music to your duration
+تقيديم - لتقديم البث للأمام استخدم الامر مع عدد الثواني . 
 /seekback or /cseekback - Backward Seek the music to your duration
+تاخير - لأرجاع البث الى خلف استخدم الامر مع عدد الثواني .
 /restart - Restart bot for your chat .
 
 ✅<u>**Specific Skip:**</u>
@@ -29,6 +38,7 @@ ForcePlay Commands = playforce , vplayforce , cplayforce
 **force** stands for force play.
 
 /play or /vplay or /cplay  - Bot will start playing your given query on voice chat or Stream live links on voice chats.
+شغل - للتشغيل استخدم الامر مع اسم الاغنيه . 
 /playforce or /vplayforce or /cplayforce -  **Force Play** stops the current playing track on voice chat and starts playing the searched track instantly without disturbing/clearing queue.
 /channelplay [Chat username or id] or [Disable] - Connect channel to a group and stream music on channel's voice chat from your group.
 
@@ -48,6 +58,8 @@ HELP_3 = """✅<u>**Bot Commands:**</u>
 /lyrics [Music Name] - Searches Lyrics for the particular Music on web.
 
 /song [Track Name] or [YT Link] - Download any track from youtube in mp3 or mp4 formats.
+
+يوت - للتحميل من اليوتيوب استخدم الامر مع اسم الاغنية. 
 
 /player -  Get a interactive Playing Panel.
 
