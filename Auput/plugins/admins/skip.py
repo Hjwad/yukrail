@@ -20,7 +20,6 @@ SKIP_COMMAND = get_command("SKIP_COMMAND")
 
 @app.on_message(filters.command(["التالي","تخطي","اللي بعدو"],"")
 & filters.group
-    & ~filters.groub
     & ~BANNED_USERS
 )
 
