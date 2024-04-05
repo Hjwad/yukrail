@@ -1,23 +1,36 @@
 import os
-import requests
-
-import aiohttp
-import aiofiles
+import re
 
 import yt_dlp
-from yt_dlp import YoutubeDL
-from pyrogram import Client, filters
-from pyrogram.types import Message, InputTextMessageContent
-from youtube_search import YoutubeSearch
+from pykeyboard import InlineKeyboard
+from pyrogram import filters
+from pyrogram.enums import ChatAction
+from pyrogram.types import (InlineKeyboardButton,
+                            InlineKeyboardMarkup, InputMediaAudio,
+                            InputMediaVideo, Message)
 
-from Auput import app
+from config import (BANNED_USERS, SONG_DOWNLOAD_DURATION,
+                    SONG_DOWNLOAD_DURATION_LIMIT)
+from strings import get_command
+from Auput import YouTube, app
+from Auput.utils.decorators.language import language, languageCB
+from Auput.utils.formatters import convert_bytes
+from Auput.utils.inline.song import song_markup
 
-def remove_if_exists(path):
-    if os.path.exists(path):
-        os.remove(path)
+# Command
+SONG_COMMAND = get_command("SONG_COMMAND")
 
-
-@app.on_message(command(["/song", "بحث", "يوت"]))
+@app.on_message(
+    filters.command(["/song","بحث"],"")
+    & filters.private
+    & ~filters.group
+    & ~BANNED_USERS
+)
+@app.on_message(
+    filters.command(["/song","يوت"],"")
+    & filters.group
+    & ~BANNED_USERS
+)
 async def song_downloader(client, message: Message):
     query = " ".join(message.command[1:])
     m = await message.reply_text("<b>⇜ جـارِ البحث عـن المقطـع الصـوتـي . . .</b>")
