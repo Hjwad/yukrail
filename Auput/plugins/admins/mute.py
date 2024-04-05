@@ -20,7 +20,6 @@ MUTE_COMMAND = get_command("MUTE_COMMAND")
 
 @app.on_message(filters.command(["ميوت"],"")
 & filters.group
-    & ~filters.group
     & ~BANNED_USERS
 )
 
