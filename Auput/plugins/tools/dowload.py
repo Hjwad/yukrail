@@ -41,7 +41,7 @@ def remove_if_exists(path):
 SONG_COMMAND = get_command("SONG_COMMAND")
 
 @app.on_message(
-    filters.command(["/song","بحث"],"")
+    filters.command(["/song","بحث","يوت"],"")
     & filters.private
     & ~filters.group
     & ~BANNED_USERS
