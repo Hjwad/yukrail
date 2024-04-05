@@ -36,9 +36,9 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
     elif 80 <= Uputt < 95:
         bar = "────────⦷─"
     elif 95 <= Uputt < 100:
-        bar = "─────────⦷─"
+        bar = "────────⦷─"
     else:
-        bar = "───────────⦷"
+        bar = "─────────⦷"
 
     buttons = [
         [
@@ -97,9 +97,9 @@ def telegram_markup_timer(_, chat_id, played, dur):
     elif 80 <= Uputt < 95:
         bar = "────────⦷─"
     elif 95 <= Uputt < 100:
-        bar = "─────────⦷─"
+        bar = "────────⦷─"
     else:
-        bar = "───────────⦷"
+        bar = "─────────⦷"
 
     buttons = [
         [
