@@ -11,7 +11,6 @@ from pyrogram.types import Message, InputTextMessageContent
 from youtube_search import YoutubeSearch
 
 from Auput import app
-from Auput.plugins.play.filters import command
 
 def remove_if_exists(path):
     if os.path.exists(path):
