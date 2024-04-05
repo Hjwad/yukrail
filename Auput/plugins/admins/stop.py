@@ -18,9 +18,9 @@ STOP_COMMAND = get_command("STOP_COMMAND")
 )
 
 
-@app.on_message(filters.command(["انهاء","ايقاف"],"")
+
+@app.on_message(filters.command(["ايقاف","انهاء"],"")
 & filters.group
-    & ~filters.group
     & ~BANNED_USERS
 )
 
