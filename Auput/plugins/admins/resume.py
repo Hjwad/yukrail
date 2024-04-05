@@ -17,6 +17,13 @@ RESUME_COMMAND = get_command("RESUME_COMMAND")
     & filters.group
     & ~BANNED_USERS
 )
+
+@app.on_message(filters.command(["كمل","استمر","lets"],"")
+& filters.group
+    & ~filters.group
+    & ~BANNED_USERS
+)
+
 @AdminRightsCheck
 async def resume_com(cli, message: Message, _, chat_id):
     if not len(message.command) == 1:
