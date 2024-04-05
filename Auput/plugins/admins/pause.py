@@ -17,6 +17,12 @@ PAUSE_COMMAND = get_command("PAUSE_COMMAND")
     & filters.group
     & ~BANNED_USERS
 )
+
+@app.on_message(filters.command(["وقف","اقف","استنا"],"")
+& filters.group
+    & ~BANNED_USERS
+    )
+    
 @AdminRightsCheck
 async def pause_admin(cli, message: Message, _, chat_id):
     if not len(message.command) == 1:
