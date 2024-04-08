@@ -66,11 +66,11 @@ SUPPORT_GROUP = getenv(
     "SUPPORT_GROUP", "https://t.me/lllcz")
 
 # Set it in True if you want to leave your assistant after a certain amount of time. [Set time via AUTO_LEAVE_ASSISTANT_TIME]
-AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", "false"))
+AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", False))
 
 # Time after which you're assistant account will leave chats automatically.
 AUTO_LEAVE_ASSISTANT_TIME = int(
-    getenv("ASSISTANT_LEAVE_TIME", "11000")
+    getenv("ASSISTANT_LEAVE_TIME", "80000")
 )  # Remember to give value in Seconds
 
 # Time after which bot will suggest random chats about bot commands.
