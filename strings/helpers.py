@@ -60,26 +60,6 @@ HELP_4 = """✅<u>**Extra  Commands:**</u>
 /help  - Get Commands Helper Menu with detailed explanations of commands.
 /ping- Ping the Bot and check Ram, Cpu etc stats of Bot.
 
-✅<u>**Extra arbic  Commands:**</u>
-
-◇︰تشغيل أو شغل : لبدء تشغيل الاغاني .
-
-◇︰أوامر القناة : تشغيل + أسم الأغنية  .
-
-◇︰كتم او مؤقت : لكتم الأغنية الحالية .
-
-◇︰كمل : لألغاء كتم الأغنبة الحالية .
-
-◇︰تخطي : لتخطي الأغنية الحالية .
-
-◇︰ايقاف : لايقاف تشغيل الأغنية الحالية .**
-
- ◇︰تقديم مع عدد ثواني : لتقديم الأغنية الحالية .
-
- ◇︰تاخير مع عدد ثواني : لأرجاع الأغنية الحالية .
-
-"""
-
 
 ✅<u>**Group Settings:**</u>
 /settings - Get a complete group's settings with inline buttons
