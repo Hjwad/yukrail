@@ -26,6 +26,8 @@ from Auput.utils.inline.playlist import botplaylist_markup
 from Auput.utils.logger import play_logs
 from Auput.utils.stream.stream import stream
 
+PLAY_COMMAND = get_command("PLAY_COMMAND")
+
 force_btn = InlineKeyboardMarkup(
     [
         [
@@ -50,10 +52,7 @@ async def check_is_joined(message):
     & ~BANNED_USERS
 )
 
-
-
 # Command
-PLAY_COMMAND = get_command("PLAY_COMMAND")
 
 
 @app.on_message(
