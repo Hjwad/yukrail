@@ -49,7 +49,6 @@ async def check_is_joined(message):
 
 @app.on_message(filters.command(["شغل","تشغيل","ش"],"")
 & filters.group
-& ~filters.edited
 & ~BANNED_USERS
 )
 
