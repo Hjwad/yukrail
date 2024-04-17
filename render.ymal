@@ -3,6 +3,12 @@ services:
 - type: web
   name: yukki
   runtime: static
+
+
+    env: python
+    startCommand: python3 main.py
+    buildCommand: pip3 install -U -r requirements.txt
+
   repo: https://github.com/Hjwad/y
   envVars:
   - key: STRING_SESSION
