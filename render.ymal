@@ -6,7 +6,7 @@ services:
 
 
     env: python
-    startCommand: python3 main.py
+    startCommand: python3 -m Auput
     buildCommand: pip3 install -U -r requirements.txt
 
   repo: https://github.com/Hjwad/y
