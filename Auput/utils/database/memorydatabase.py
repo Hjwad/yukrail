@@ -2,6 +2,7 @@ import config
 from config import PRIVATE_BOT_MODE
 from Auput.core.mongo import mongodb
 
+
 channeldb = mongodb.cplaymode
 commanddb = mongodb.commands
 cleandb = mongodb.cleanmode
@@ -9,7 +10,7 @@ playmodedb = mongodb.playmode
 playtypedb = mongodb.playtypedb
 langdb = mongodb.language
 authdb = mongodb.adminauth
-videodb = mongodb.auputvideocalls
+videodb = mongodb.Auputvideocalls
 onoffdb = mongodb.onoffper
 suggdb = mongodb.suggestion
 autoenddb = mongodb.autoend
@@ -447,10 +448,9 @@ async def maintenance_on():
     return await onoffdb.insert_one({"on_off": 1})
 
 
-# Audio Video Limit
+# Audio Video Quality 
 
 from pytgcalls.types import AudioQuality, VideoQuality
-
 
 
 async def save_audio_bitrate(chat_id: int, bitrate: str):
@@ -474,7 +474,7 @@ async def get_vid_bit_name(chat_id: int) -> str:
         if PRIVATE_BOT_MODE == str(True):
             return "High"
         else:
-            return "Medium"
+            return "High"
     return mode
 
 
@@ -494,12 +494,12 @@ async def get_video_bitrate(chat_id: int) -> str:
     mode = video.get(chat_id)
     if not mode:
         if PRIVATE_BOT_MODE == str(True):
-            return HighQualityVideo()
+            return VideoQuality.SD_480p
         else:
-            return MediumQualityVideo()
+            return VideoQuality.SD_480p
     if str(mode) == "High":
-        return HighQualityVideo()
+        return VideoQuality.SD_480p
     elif str(mode) == "Medium":
-        return MediumQualityVideo()
+        return VideoQuality.SD_480p
     elif str(mode) == "Low":
-        return LowQualityVideo()
+        return VideoQuality.SD_480p
