@@ -16,7 +16,7 @@ from pytgcalls.types import (JoinedGroupCallParticipant,
                              MediaStream,
                              LeftGroupCallParticipant, Update, AudioQuality, VideoQuality)
 from pytgcalls.types.stream import StreamAudioEnded
-from Auput import config
+import config
 from Auput.Bgt import get_string
 from Auput import LOGGER, YouTube, app
 from Auput.misc import db
