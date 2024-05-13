@@ -20,6 +20,7 @@ from Auput.utils.channelplay import get_channeplayCB
 from Auput.utils.database import is_video_allowed
 from Auput.utils.decorators.language import languageCB
 from Auput.utils.decorators.play import PlayWrapper
+from Auput.utils.bk import command
 from Auput.utils.formatters import formats
 from Auput.utils.inline.play import (livestream_markup,
                                           playlist_markup,
