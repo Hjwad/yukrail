@@ -1,7 +1,7 @@
 ## Powered by Aditya & Auput Halder 
 
 import random
-from Auput import Auput
+import string
 from ast import ExceptHandler
 
 from pyrogram import filters
@@ -9,9 +9,9 @@ from pyrogram.types import (InlineKeyboardMarkup, InlineKeyboardButton, InputMed
                             Message)
 from pytgcalls.exceptions import NoActiveGroupCall
 
-from Auput import config
-from Auput.config import BANNED_USERS, lyrical
-from Auput.Auput import get_command
+import config
+from config import BANNED_USERS, lyrical
+from strings import get_command
 from Auput import (Apple, Resso, SoundCloud, Spotify, Telegram,
                         YouTube, app)
 from Auput.core.call import Auputh
