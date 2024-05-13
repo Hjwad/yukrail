@@ -17,7 +17,7 @@ from pytgcalls.types import (JoinedGroupCallParticipant,
                              LeftGroupCallParticipant, Update, AudioQuality, VideoQuality)
 from pytgcalls.types.stream import StreamAudioEnded
 import config
-from Auput.Bgt import get_string
+from strings import get_string
 from Auput import LOGGER, YouTube, app
 from Auput.misc import db
 from Auput.utils.database import (add_active_chat,
