@@ -8,17 +8,16 @@ from pyrogram.errors import (ChatAdminRequired,
                              UserAlreadyParticipant,
                              UserNotParticipant)
 from pyrogram.types import InlineKeyboardMarkup
-from pytgcalls import PyTgCalls, StreamType
+from ntgcalls import TelegramServerError
+from pytgcalls import PyTgCalls
 from pytgcalls.exceptions import (AlreadyJoinedError,
-                                  NoActiveGroupCall,
-                                  TelegramServerError)
-from pytgcalls.types import (JoinedGroupCallParticipant,
-                             LeftGroupCallParticipant, Update)
-from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
+                                  NoActiveGroupCall)
+from pytgcalls.types import (JoinedGroupCallParticipant, 
+                             MediaStream,
+                             LeftGroupCallParticipant, Update, AudioQuality, VideoQuality)
 from pytgcalls.types.stream import StreamAudioEnded
-
-import config
-from strings import get_string
+from Auput import config
+from Auput.Bgt import get_string
 from Auput import LOGGER, YouTube, app
 from Auput.misc import db
 from Auput.utils.database import (add_active_chat,
