@@ -169,6 +169,9 @@ SPOTIFY_ALBUM_IMG_URL = "https://telegra.ph/file/1bccb452031ac902596bf.jpg"
 SPOTIFY_PLAYLIST_IMG_URL = "https://telegra.ph/file/1bccb452031ac902596bf.jpg"
 
 
+COMMAND_PREFIXES.append('')
+
+
 def time_to_seconds(time):
     stringt = str(time)
     return sum(
