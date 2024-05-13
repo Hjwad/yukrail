@@ -1,66 +1,44 @@
+## Powered by Aditya & Auput Halder 
+
 import random
-import string
+from Auput import Auput
 from ast import ExceptHandler
 
 from pyrogram import filters
-from pyrogram.types import (InlineKeyboardMarkup, InputMediaPhoto, InlineKeyboardButton,
+from pyrogram.types import (InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto,
                             Message)
 from pytgcalls.exceptions import NoActiveGroupCall
 
-import config
-from config import BANNED_USERS, lyrical
-from strings import get_command
+from Auput import config
+from Auput.config import BANNED_USERS, lyrical
+from Auput.Auput import get_command
 from Auput import (Apple, Resso, SoundCloud, Spotify, Telegram,
                         YouTube, app)
-from Auput.core.call import Auput
+from Auput.core.call import Auputh
 from Auput.utils import seconds_to_min, time_to_seconds
 from Auput.utils.channelplay import get_channeplayCB
 from Auput.utils.database import is_video_allowed
 from Auput.utils.decorators.language import languageCB
 from Auput.utils.decorators.play import PlayWrapper
+from Auput.utils.Auputmusic.bk import command
 from Auput.utils.formatters import formats
 from Auput.utils.inline.play import (livestream_markup,
                                           playlist_markup,
                                           slider_markup, track_markup)
+from Auput.utils.database import is_served_user
 from Auput.utils.inline.playlist import botplaylist_markup
 from Auput.utils.logger import play_logs
 from Auput.utils.stream.stream import stream
 
-PLAY_COMMAND = get_command("PLAY_COMMAND")
-
-force_btn = InlineKeyboardMarkup(
-    [
-        [
-            InlineKeyboardButton(   
-              text=f"اضغط للأشتراك .", url=f"t.me/mmmsc",)                        
-        ],        
-    ]
-)
-async def check_is_joined(message):    
-    try:
-        userid = message.from_user.id
-        user_name = message.from_user.first_name
-        status = await app.get_chat_member("mmmsc", userid)
-        return True
-    except Exception:
-        await message.reply_text(f'┇عزيزي: {message.from_user.mention}\n┇أشتࢪك في قناة البوت أولاً.\n┇قناة البوت: @mmmsc . 🍓 ',reply_markup=force_btn,disable_web_page_preview=False)
-        return False
-
-
-@app.on_message(filters.command(["شغل","تشغيل","ش"],"")
-& filters.group
-& ~BANNED_USERS
-)
-
 # Command
+PLAY_COMMAND = get_command("PLAY_COMMAND")
 
 
 @app.on_message(
-    filters.command(PLAY_COMMAND)
+    command(PLAY_COMMAND)
     & filters.group
     & ~BANNED_USERS
 )
-
 @PlayWrapper
 async def play_commnd(
     client,
@@ -73,7 +51,20 @@ async def play_commnd(
     url,
     fplay,
 ):
-    if not await check_is_joined(message):
+    if not await is_served_user(message.from_user.id):
+        await message.reply_text(
+            text="Error, You're Not A Verified User ❌\nPlease Click On The Below Button To Verify Yourself .",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            text="Click For Play Or Verify Here",
+                            url=f"https://t.me/{app.username}?start=verify",
+                        )
+                    ]
+                ]
+            ),
+        )
         return
     mystic = await message.reply_text(
         _["play_2"].format(channel) if channel else _["play_1"]
@@ -137,6 +128,7 @@ async def play_commnd(
                     forceplay=fplay,
                 )
             except Exception as e:
+                print(e)
                 ex_type = type(e).__name__
                 err = (
                     e
@@ -187,6 +179,7 @@ async def play_commnd(
                     forceplay=fplay,
                 )
             except Exception as e:
+                print(e)
                 ex_type = type(e).__name__
                 err = (
                     e
@@ -235,7 +228,7 @@ async def play_commnd(
                 and not config.SPOTIFY_CLIENT_SECRET
             ):
                 return await mystic.edit_text(
-                    "This bot isn't able to play spotify queries. Please ask my owner to enable spotify."
+                    "𝐓𝐡𝐢𝐬 𝐁𝐨𝐭 𝐂𝐚𝐧'𝐭 𝐏𝐥𝐚𝐲 𝐒𝐩𝐨𝐭𝐢𝐟𝐲 𝐓𝐫𝐜𝐤𝐬 𝐨𝐫 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭𝐬 𝐑𝐞𝐩𝐨𝐫𝐭 [𝐁𝐠𝐭 𝐂𝐡𝐚𝐭](https://t.me/Auput_Chat)."
                 )
             if "track" in url:
                 try:
@@ -250,7 +243,8 @@ async def play_commnd(
             elif "playlist" in url:
                 try:
                     details, plist_id = await Spotify.playlist(url)
-                except Exception:
+                except Exception as e:
+                    print(e)
                     return await mystic.edit_text(_["play_3"])
                 streamtype = "playlist"
                 plist_type = "spplay"
@@ -261,7 +255,8 @@ async def play_commnd(
             elif "album" in url:
                 try:
                     details, plist_id = await Spotify.album(url)
-                except Exception:
+                except Exception as e:
+                    print(e)
                     return await mystic.edit_text(_["play_3"])
                 streamtype = "playlist"
                 plist_type = "spalbum"
@@ -272,7 +267,8 @@ async def play_commnd(
             elif "artist" in url:
                 try:
                     details, plist_id = await Spotify.artist(url)
-                except Exception:
+                except Exception as e:
+                    print(e)
                     return await mystic.edit_text(_["play_3"])
                 streamtype = "playlist"
                 plist_type = "spartist"
@@ -286,7 +282,8 @@ async def play_commnd(
             if "album" in url:
                 try:
                     details, track_id = await Apple.track(url)
-                except Exception:
+                except Exception as e:
+                    print(e)
                     return await mystic.edit_text(_["play_3"])
                 streamtype = "youtube"
                 img = details["thumb"]
@@ -297,7 +294,8 @@ async def play_commnd(
                 spotify = True
                 try:
                     details, plist_id = await Apple.playlist(url)
-                except Exception:
+                except Exception as e:
+                    print(e)
                     return await mystic.edit_text(_["play_3"])
                 streamtype = "playlist"
                 plist_type = "apple"
@@ -311,6 +309,7 @@ async def play_commnd(
             try:
                 details, track_id = await Resso.track(url)
             except Exception as e:
+                print(e)
                 return await mystic.edit_text(_["play_3"])
             streamtype = "youtube"
             img = details["thumb"]
@@ -320,7 +319,8 @@ async def play_commnd(
         elif await SoundCloud.valid(url):
             try:
                 details, track_path = await SoundCloud.download(url)
-            except Exception:
+            except Exception as e:
+                print(e)
                 return await mystic.edit_text(_["play_3"])
             duration_sec = details["duration_sec"]
             if duration_sec > config.DURATION_LIMIT:
@@ -343,6 +343,7 @@ async def play_commnd(
                     forceplay=fplay,
                 )
             except Exception as e:
+                print(e)
                 ex_type = type(e).__name__
                 err = (
                     e
@@ -353,16 +354,17 @@ async def play_commnd(
             return await mystic.delete()
         else:
             try:
-                await Auput.stream_call(url)
+                await Auputh.stream_call(url)
             except NoActiveGroupCall:
                 await mystic.edit_text(
-                    "There's an issue with the bot. Please report it to my owner and ask them to check logger group."
+                    "There's An Error In The Bot Then Report [𝐁𝐠𝐭 𝐂𝐡𝐚𝐭](https://t.me/Auput_chat) AN Error"
                 )
                 return await app.send_message(
                     config.LOG_GROUP_ID,
-                    "Please turn on Voice Chat.. Bot is not able to stream urls..",
+                    "Please Turn On Vc To Play Music.",
                 )
             except Exception as e:
+                print(e)
                 return await mystic.edit_text(
                     _["general_3"].format(type(e).__name__)
                 )
@@ -381,6 +383,7 @@ async def play_commnd(
                     forceplay=fplay,
                 )
             except Exception as e:
+                print(e)
                 ex_type = type(e).__name__
                 err = (
                     e
@@ -404,7 +407,8 @@ async def play_commnd(
             query = query.replace("-v", "")
         try:
             details, track_id = await YouTube.track(query)
-        except Exception:
+        except Exception as e:
+            print(e)
             return await mystic.edit_text(_["play_3"])
         streamtype = "youtube"
     if str(playmode) == "Direct":
@@ -448,6 +452,7 @@ async def play_commnd(
                 forceplay=fplay,
             )
         except Exception as e:
+            print(e)
             ex_type = type(e).__name__
             err = (
                 e
@@ -535,26 +540,30 @@ async def play_music(client, CallbackQuery, _):
             return await CallbackQuery.answer(
                 _["playcb_1"], show_alert=True
             )
-        except:
+        except Exception as e:
+            print(e)
             return
     try:
         chat_id, channel = await get_channeplayCB(
             _, cplay, CallbackQuery
         )
-    except:
+    except Exception as e:
+        print(e)
         return
     user_name = CallbackQuery.from_user.first_name
     try:
         await CallbackQuery.message.delete()
         await CallbackQuery.answer()
-    except:
+    except Exception as e:
+        print(e)
         pass
     mystic = await CallbackQuery.message.reply_text(
         _["play_2"].format(channel) if channel else _["play_1"]
     )
     try:
         details, track_id = await YouTube.track(vidid, True)
-    except Exception:
+    except Exception as e:
+        print(e)
         return await mystic.edit_text(_["play_3"])
     if details["duration_min"]:
         duration_sec = time_to_seconds(details["duration_min"])
@@ -593,6 +602,7 @@ async def play_music(client, CallbackQuery, _):
             forceplay=ffplay,
         )
     except Exception as e:
+        print(e)
         ex_type = type(e).__name__
         err = (
             e
@@ -609,7 +619,7 @@ async def play_music(client, CallbackQuery, _):
 async def anonymous_check(client, CallbackQuery):
     try:
         await CallbackQuery.answer(
-            "You're an Anonymous Admin\n\nGo to your group's setting \n-> Administrators List \n-> Click on your name \n-> uncheck REMAIN ANONYMOUS button there.",
+            "🥀 You're An Anonymous Admin\n\nRevert To Normal TheN Use Me 💖.",
             show_alert=True,
         )
     except:
@@ -617,7 +627,7 @@ async def anonymous_check(client, CallbackQuery):
 
 
 @app.on_callback_query(
-    filters.regex("AuputPlaylists") & ~BANNED_USERS
+    filters.regex("AuputhPlaylists") & ~BANNED_USERS
 )
 @languageCB
 async def play_playlists_command(client, CallbackQuery, _):
@@ -636,19 +646,22 @@ async def play_playlists_command(client, CallbackQuery, _):
             return await CallbackQuery.answer(
                 _["playcb_1"], show_alert=True
             )
-        except:
+        except Exception as e:
+            print(e)
             return
     try:
         chat_id, channel = await get_channeplayCB(
             _, cplay, CallbackQuery
         )
-    except:
+    except Exception as e:
+        print(e)
         return
     user_name = CallbackQuery.from_user.first_name
     await CallbackQuery.message.delete()
     try:
         await CallbackQuery.answer()
-    except:
+    except Exception as e:
+        print(e)
         pass
     mystic = await CallbackQuery.message.reply_text(
         _["play_2"].format(channel) if channel else _["play_1"]
@@ -666,27 +679,32 @@ async def play_playlists_command(client, CallbackQuery, _):
                 CallbackQuery.from_user.id,
                 True,
             )
-        except Exception:
+        except Exception as e:
+            print(e)
             return await mystic.edit_text(_["play_3"])
     if ptype == "spplay":
         try:
             result, spotify_id = await Spotify.playlist(videoid)
-        except Exception:
+        except Exception as e:
+            print(e)
             return await mystic.edit_text(_["play_3"])
     if ptype == "spalbum":
         try:
             result, spotify_id = await Spotify.album(videoid)
-        except Exception:
+        except Exception as e:
+            print(e)
             return await mystic.edit_text(_["play_3"])
     if ptype == "spartist":
         try:
             result, spotify_id = await Spotify.artist(videoid)
-        except Exception:
+        except Exception as e:
+            print(e)
             return await mystic.edit_text(_["play_3"])
     if ptype == "apple":
         try:
             result, apple_id = await Apple.playlist(videoid, True)
-        except Exception:
+        except Exception as e:
+            print(e)
             return await mystic.edit_text(_["play_3"])
     try:
         await stream(
@@ -703,6 +721,7 @@ async def play_playlists_command(client, CallbackQuery, _):
             forceplay=ffplay,
         )
     except Exception as e:
+        print(e)
         ex_type = type(e).__name__
         err = (
             e
