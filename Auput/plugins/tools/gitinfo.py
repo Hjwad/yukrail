@@ -1,10 +1,10 @@
 import asyncio, os, time, aiohttp
 import aiohttp
 from pyrogram import filters
+from Auput.utils.bk import command
 from blackpink import blackpink as bp
 from Auput import app
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
 
 @app.on_message(filters.command("blackpink"))
 async def blackpink(_, message):
