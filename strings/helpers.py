@@ -55,11 +55,9 @@ HELP_3 = """
 
 HELP_4 = """✅<u>**اوامر اضافية:**</u>
 
-/start - Start the Music Bot.
-/help  - Get Commands Helper Menu with detailed explanations of commands.
-/ping- Ping the Bot and check Ram, Cpu etc stats of Bot.
+ميوزك  - للحصول على مساعدة .
 
-
+بينج - للحصول على معلومات بينج البوت .
 
 
 HELP_5 = """
