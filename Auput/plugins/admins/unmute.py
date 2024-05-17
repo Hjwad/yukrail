@@ -14,14 +14,11 @@ UNMUTE_COMMAND = get_command("UNMUTE_COMMAND")
 
 
 @app.on_message(
-    filters.command(UNMUTE_COMMAND)
+    command(UNMUTE_COMMAND)
     & filters.group
     & ~BANNED_USERS
 )
-@app.on_message(filters.command(["الغاء الميوت","الغاء ميوت"],"")
-& filters.group
-    & ~BANNED_USERS
-)
+
 @AdminRightsCheck
 async def unmute_admin(Client, message: Message, _, chat_id):
     if not len(message.command) == 1 or message.reply_to_message:
