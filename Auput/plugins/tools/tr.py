@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.types import *
 from Auput import app
 from gpytranslate import Translator
-
+from Auput.utils.bk import command
 
 
 trans = Translator()
