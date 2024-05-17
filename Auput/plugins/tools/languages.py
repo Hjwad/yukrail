@@ -41,7 +41,7 @@ LANGUAGE_COMMAND = get_command("LANGUAGE_COMMAND")
 
 
 @app.on_message(
-    filters.command(LANGUAGE_COMMAND)
+    command(LANGUAGE_COMMAND)
     & filters.group
     & ~BANNED_USERS
 )
