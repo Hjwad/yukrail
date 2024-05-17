@@ -9,6 +9,7 @@ from pyrogram.types import (InlineKeyboardButton,
 
 from config import BANNED_USERS, lyrical
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import app
 from Auput.utils.decorators.language import language
 
