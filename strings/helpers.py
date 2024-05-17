@@ -53,6 +53,15 @@ HELP_3 = """
 
 """
 
+HELP_4 = """✅<u>**اوامر اضافية:**</u>
+
+/start - Start the Music Bot.
+/help  - Get Commands Helper Menu with detailed explanations of commands.
+/ping- Ping the Bot and check Ram, Cpu etc stats of Bot.
+
+
+
+
 HELP_5 = """
 ● <b>قائمــة اوامــر المطــور :</b>
 ٴ⋆┄─┄─┄─┄─┄─┄─┄─┄⋆
