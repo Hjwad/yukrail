@@ -2,6 +2,7 @@ from telegraph import upload_file
 from pyrogram import filters
 from Auput import app
 from pyrogram.types import InputMediaPhoto
+from Auput.utils.bk import command
 
 
 @app.on_message(filters.command(["tgm" , "link"]))
