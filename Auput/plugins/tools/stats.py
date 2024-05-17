@@ -12,6 +12,7 @@ from pytgcalls.__version__ import __version__ as pytgver
 import config
 from config import BANNED_USERS, MUSIC_BOT_NAME
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import YouTube, app
 from Auput.core.userbot import assistants
 from Auput.misc import SUDOERS, pymongodb
