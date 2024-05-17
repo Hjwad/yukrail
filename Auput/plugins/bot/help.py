@@ -8,6 +8,7 @@ from strings import get_command, get_string, helpers
 from Auput.utils.bk import command
 from Auput import app
 from Auput.misc import SUDOERS
+from Auput.utils import help_pannel
 from Auput.utils.database import get_lang, is_commanddelete_on
 from Auput.utils.decorators.language import (LanguageStart,
                                                   languageCB)
