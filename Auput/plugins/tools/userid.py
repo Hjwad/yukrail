@@ -1,6 +1,7 @@
 from Auput import app
 from pyrogram import filters
 from pyrogram.enums import ParseMode
+from Auput.utils.bk import command
 
 
 @app.on_message(filters.command("me"))
