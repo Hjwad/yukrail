@@ -6,6 +6,7 @@ from aiohttp import ClientSession
 from pyrogram import filters
 from pyrogram.types import *
 from Auput import app
+from Auput.utils.bk import command
 
 button = InlineKeyboardMarkup([[
             InlineKeyboardButton("⌯ ᴄʟᴏsᴇ ⌯", callback_data="close_data")
