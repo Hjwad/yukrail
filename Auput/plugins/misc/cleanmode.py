@@ -9,6 +9,7 @@ from pyrogram.raw import types
 import config
 from config import adminlist, chatstats, clean, userstats
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import app, userbot
 from Auput.misc import SUDOERS
 from Auput.utils.database import (get_active_chats,
