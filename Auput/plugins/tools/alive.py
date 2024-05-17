@@ -5,6 +5,7 @@ from pyrogram import filters
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from config import MUSIC_BOT_NAME, OWNER_USERNAME, SUPPORT_CHANNEL
+from Auput.utils.bk import command
 
 @app.on_message(filters.command("alive", ["/", ".", "!"]))
 async def kontolmasukmemek(client: Client, message: Message):
