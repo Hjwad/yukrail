@@ -5,6 +5,7 @@ from pyrogram.types import InlineKeyboardMarkup
 
 from config import BANNED_USERS
 from Auput import app
+from Auput.utils.bk import command
 from Auput.utils.database import (get_global_tops,
                                        get_particulars, get_userss)
 from Auput.utils.decorators.language import languageCB
