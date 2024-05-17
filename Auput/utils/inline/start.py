@@ -123,7 +123,7 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
         [
             InlineKeyboardButton(text=_["ST_B_6"], callback_data="LG"),
             InlineKeyboardButton(
-                text="Not ᥉ꪮ᥉ ", url=f"{SUPPORT_GROUP}"
+                text="source", url=f"{SUPPORT_GROUP}"
             ),
         ]
                   )
