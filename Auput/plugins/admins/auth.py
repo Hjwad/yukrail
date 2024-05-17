@@ -3,6 +3,7 @@ from pyrogram.types import Message
 
 from config import BANNED_USERS, adminlist
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import app
 from Auput.utils.database import (delete_authuser, get_authuser,
                                        get_authuser_names,
