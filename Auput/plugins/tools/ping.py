@@ -5,6 +5,7 @@ from pyrogram.types import Message
 
 from config import BANNED_USERS, MUSIC_BOT_NAME, PING_IMG_URL
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import app
 from Auput.core.call import Auput
 from Auput.utils import bot_sys_stats
