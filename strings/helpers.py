@@ -1,101 +1,78 @@
-HELP_1 = """✅**<u>Admin Commands:</u>**
+HELP_1 =  """
+❡━━━━❂ اوامـــر الميـــوزك ❂━━━━❡
 
-**c** stands for channel play.
+✅**<u>اوامر الادمن:</u>**
 
-/pause or /cpause - Pause the playing music.
-/resume or /cresume- Resume the paused music.
-/mute or /cmute- Mute the playing music.
-/unmute or /cunmute- Unmute the muted music.
-/skip or /cskip- Skip the current playing music.
-/stop or /cstop- Stop the playing music.
-/shuffle or /cshuffle- Randomly shuffles the queued playlist.
-/seek or /cseek - Forward Seek the music to your duration
-/seekback or /cseekback - Backward Seek the music to your duration
-/restart - Restart bot for your chat .
+ 
+◍ -『 **وقف** 』\n لإيقاف المقطع مؤقتآ داخل المحادثه الصوتيه  •
+◍ -『 **كمل** 』\n لاستئناف المقطع مره اخري داخل المحادثه الصوتيه  •
+◍ -『 **اسكت** 』\n لكتم صوت المقطع داخل المحادثه الصوتيه  •
+◍ -『 **اتكلم** 』\n لألغاء كتم صوت المقطع داخل المحادثه الصوتيه  •
+◍ -『 **تخطي او التالي** 』\n للتخطي إلي المقطع المنتظر بقائمة الانتظار لديك  •
+◍ -『 **ايقاف او انهاء** 』\n لأنهاء التشغيل ومغادره المساعد المحادثه الصوتيه  •
 
-✅<u>**Specific Skip:**</u>
-/skip or /cskip [Number(example: 3)] 
-    - Skips music to a the specified queued number. Example: /skip 3 will skip music to third queued music and will ignore 1 and 2 music in queue.
 """
 
 
-HELP_2 = """✅<u>**Play Commands:**</u>
+HELP_2 = """❡━━━❂ اوامـــر الميـــوزك ❂━━━❡
 
-Available Commands = play , vplay , cplay
-ForcePlay Commands = playforce , vplayforce , cplayforce
+✅<u>**اوامرالتشغيل :**</u>
 
-**c** stands for channel play.
-**v** stands for video play.
-**force** stands for force play.
+◍ - اوامر تشغيل البوت في المجموعات 
 
-/play or /vplay or /cplay  - Bot will start playing your given query on voice chat or Stream live links on voice chats.
-/playforce or /vplayforce or /cplayforce -  **Force Play** stops the current playing track on voice chat and starts playing the searched track instantly without disturbing/clearing queue.
-/channelplay [Chat username or id] or [Disable] - Connect channel to a group and stream music on channel's voice chat from your group.
+◍ -『 **تشغيل او شغل ** 』\n ثم اسم المقطع الصوتي او الرابط الخاص به  •
+◍ -『 **شغل او تشغيل** 』\n ثم اسم مقطع الفيديو او الرابط الخاص به  •
+◍ -『 **بحث او تنزيل** 』\n ثم اسم المقطع المراد تنزيله من موقع اليوتيوب مباشر او الرابط الخاص به  •
+◍ -『 **ريلود** 』\n قم بأرسالها ( دآخل المجموعات ) لتحديث قائمه المشرفين بمجموعتك  •
 
-
-✅**<u>Bot's Server Playlists:</u>**
-/playlist  - Check Your Saved Playlist On Servers.
-/deleteplaylist - Delete any saved music in your playlist
-/play  - Start playing Your Saved Playlist from Servers."""
+ """
 
 
-HELP_3 = """✅<u>**Bot Commands:**</u>
+HELP_3 = """
 
-/stats - Get Top 10 Tracks Global Stats, Top 10 Users of bot, Top 10 Chats on bot, Top 10 Played in a chat etc etc.
+✅<u>**اوامر البوت:**</u>
 
-/sudolist - Check Sudo Users of Nezuko Music Bot
+◍ -『 **وضع تشغيل** 』\n لضبط وضع تحكم التشغيل للأدمن او للاعضاء داخل مجموعتك  •
 
-/lyrics [Music Name] - Searches Lyrics for the particular Music on web.
+◍ -『 **القائمه** 』\n لعرض قائمه التشغيل الخاصه بك  •
 
-/song [Track Name] or [YT Link] - Download any track from youtube in mp3 or mp4 formats.
+◍ -『 **حذف القائمه** 』\n لحذف قائمه التشغيل الخاصه بك  •
 
-/player -  Get a interactive Playing Panel.
+◍ -『 **لغه** 』\n لتغيير لغة البوت إلي اي لغه اخري  •
 
-**c** stands for channel play.
+◍ -『 **احصائيات** 』\n لعرض قسم الاحصائيات العامه للبوت ولترند التشغيل العالمي •
 
-/queue or /cqueue- Check Queue List of Music."""
+◍ -『 **ريلود** 』\n لتحديث قائمة المشرفين داخل مجموعتك •
 
-HELP_4 = """✅<u>**Extra  Commands:**</u>
-/start - Start the Music Bot.
-/help  - Get Commands Helper Menu with detailed explanations of commands.
-/ping- Ping the Bot and check Ram, Cpu etc stats of Bot.
+◍ -『 **بينج** 』\n لقياس سرعه التشغيل على السيرفر وعرض تفاصيل معلومات التشغيل •
 
+◍ -『 **كلمات** 』\n ثم اسم الاغنيه لجلب كلمات الاغنيه كامله بصيغه النصوص •
 
-✅<u>**Group Settings:**</u>
-/settings - Get a complete group's settings with inline buttons
+◍ -『 **يوت** 』\n ثم اسم المقطع او الرابط الخاص به لتحميله مباشر من اليوتيوب •
 
 
-/playmode - Get a complete play settings panel with buttons where you can set your group's play settings. 
 """
 
-HELP_5 = """🔰**<u>Sudo Commands :</u>**
-/addsudo [Username or Reply to a user]
-/delsudo [Username or Reply to a user]
+HELP_5 = """
+● <b>قائمــة اوامــر المطــور :</b>
+ٴ⋆┄─┄─┄─┄─┄─┄─┄─┄⋆
+<b>- قائمــة اوامــر الحظــر :</b>
+ٴ⋆┄─┄─┄─┄─┄─┄─┄─┄⋆
 
-📈**<u>STATS COMMANDS:</u>**
-/activevoice - Check active voice chats on bot.
-/activevideo - Check active video calls on bot.
-/stats - Check Bots Stats
+بلوك/الغاء بلوك/المبلكين
+<b>- لـ حظـر/الغـاء حظـر شخـص من استخـدام ميـوزك البـوت</b>
 
-⚠️**<u>BLACKLIST CHAT FUNCTION:</u>**
-/blacklistchat [CHAT_ID] - Blacklist any chat from using Music Bot
-/whitelistchat [CHAT_ID] - Whitelist any blacklisted chat from using Music Bot
-/blacklistedchat - Check all blacklisted chats.
+احظره عام/الغاء حظره عام
+<b>- لـ حظـر/الغـاء حظـر شخـص من استخـدام ميـوزك البـوت عـام</b>
 
+المحظورين عام
+<b>- لـ جلب قائمـة المحظـورين عـام فـي البـوت</b>
 
-👤**<u>GBAN FUNCTION:</u>**
-/gban [Username or Reply to a user] - Gban a user from bot's served chat and stop him from using your bot.
-/ungban [Username or Reply to a user] - Remove a user from Bot's gbanned List and allow him for using your bot
-/gbannedusers - Check Gbanned Users Lists
+حظر مجموعة/سماح
+<b>- لـ حظـر/الغـاء حظـر مجموعـة من استخـدام ميـوزك البـوت</b>
 
-🌐**<u>BROADCAST FUNCTION:</u>**
-/broadcast [Message or Reply to a Message] - Broadcast any message to Bot's Served Chats.
-
-<u>options for broadcast:</u>
-**-pin** | **-pinloud** | **-user** |
-**-assistant** | **-nobot**
-
-**Example:** `/broadcast -user -assistant -pin Hello Testing`
+المجموعات المحظورة
+<b>- لـ جلب قائمـة بالمجمـوعـات المحظـورة مـن استـخـدام البـوت</b>
 
 """
 
@@ -113,51 +90,54 @@ HELP_7 = """
  """
 
 HELP_8 = """
-<b><u>Info :</b></u>
+<b><u>الايدي :</b></u>
 
-/id : Get The Current Group id. If Used By Replying To A Message, Get That User's ID.
-/info : Get Information About A User.
+⦿ soon ...
+
 """
 
 HELP_9 = """
-<b><u>Telegraph :</b></u>
+<b><u>تحويل صورة:</b></u>
 
-⦿ /tgm : Uploads A Photo (Under 5ᴍʙ) To The Cloud And Gives A Link.
+◍ -『 **تليجراف** 』\n بالرد على صورة لتحويلها الى رابط •
+
 """
 
 HELP_10 = """
-<b><u>Welcome :</b></u>
+<b><u>ترحيب :</b></u>
 
- ⦿ /welcome [ᴏɴ/ᴏғғ] : Special Welcome On In Your Group.
+ ⦿ soon ..
 """
 
 
 HELP_11 = """
-<b><u>AFK :</b></u>
+<b><u>الصاعدين :</b></u>
 
-⦿ /afk : To Start AFK.
+⦿ soon ...
+
 """
 
 HELP_12 = """
-<b><u>Couples :</b></u>
+<b><u>ثنائي  :</b></u>
 
-⦿ /couples : Get Todays Couples Of The Group In Interactive View.
+⦿ soon ..
 """
 
 HELP_13 = """
-<b><u>Carbon :</b></u>
+<b><u>كاربون :</b></u>
 
-⦿ /carbon : Make a Carbon.
+⦿ كاربون : لعمل صورة كاربون. 
 """
 
 HELP_14 = """
-<b><u>Quotly :</b></u>
+<b><u>انمي:</b></u>
 
-⦿ /q : Generate Quotly From Message.
+⦿ soon . 
+
 """
 
 HELP_15 = """
-<b><u>SangMata :</b></u>
+<b><u>الكاشف :</b></u>
 
-⦿ /sg : To Check History Name.
+⦿ كشف : مع اليوزر او الايدي للكشف عن اسماء الحساب السابقه. 
 """
