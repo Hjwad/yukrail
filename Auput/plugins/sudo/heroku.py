@@ -15,6 +15,7 @@ from pyrogram import filters
 
 import config
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import app
 from Auput.misc import HAPP, SUDOERS, XCB
 from Auput.utils.database import (get_active_chats,
