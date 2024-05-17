@@ -19,13 +19,8 @@ from Auput.utils.thumbnails import gen_thumb
 SKIP_COMMAND = get_command("SKIP_COMMAND")
 
 @app.on_message(
-    filters.command(SKIP_COMMAND)
+    command(SKIP_COMMAND)
     & filters.group
-    & ~BANNED_USERS
-)
-
-@app.on_message(filters.command(["التالي","تخطي","اللي بعدو"],"")
-& filters.group
     & ~BANNED_USERS
 )
 
