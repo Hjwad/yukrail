@@ -3,6 +3,7 @@ from pyrogram.types import Message
 
 from config import BANNED_USERS
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import YouTube, app
 from Auput.core.call import Auput
 from Auput.misc import db
