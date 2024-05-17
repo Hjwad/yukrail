@@ -3,6 +3,7 @@ from pyrogram.types import Message
 
 from config import BANNED_USERS
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import app
 from Auput.utils.database.memorydatabase import (get_loop,
                                                       set_loop)
