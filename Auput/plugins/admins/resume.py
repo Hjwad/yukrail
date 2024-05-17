@@ -14,13 +14,8 @@ RESUME_COMMAND = get_command("RESUME_COMMAND")
 
 
 @app.on_message(
-    filters.command(RESUME_COMMAND)
+    command(RESUME_COMMAND)
     & filters.group
-    & ~BANNED_USERS
-)
-
-@app.on_message(filters.command(["كمل","استمر","lets"],"")
-& filters.group
     & ~BANNED_USERS
 )
 
