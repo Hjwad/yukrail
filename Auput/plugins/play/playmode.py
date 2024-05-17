@@ -3,6 +3,7 @@ from pyrogram.types import InlineKeyboardMarkup, Message
 
 from config import BANNED_USERS
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import app
 from Auput.utils.database import (get_playmode, get_playtype,
                                        is_nonadmin_chat)
