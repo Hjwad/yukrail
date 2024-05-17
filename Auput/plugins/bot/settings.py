@@ -7,6 +7,7 @@ from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
 from config import (BANNED_USERS, CLEANMODE_DELETE_MINS,
                     MUSIC_BOT_NAME, OWNER_ID)
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import app
 from Auput.utils.database import (add_nonadmin_chat,
                                        cleanmode_off, cleanmode_on,
