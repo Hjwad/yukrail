@@ -2,6 +2,7 @@ import aiohttp
 from io import BytesIO
 from Auput import app
 from pyrogram import filters
+from Auput.utils.bk import command
 
 
 
