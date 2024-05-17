@@ -10,6 +10,7 @@ from pyrogram.types import(InlineKeyboardButton, InlineKeyboardMarkup, InputMedi
 from logging import getLogger
 from config import LOG_GROUP_ID
 from Auput import app
+from Auput.utils.bk import command
 
 LOGGER = getLogger(__name__)
 
