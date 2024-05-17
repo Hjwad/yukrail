@@ -6,7 +6,7 @@ from youtubesearchpython.__future__ import VideosSearch
 from config import BANNED_USERS, MUSIC_BOT_NAME
 from Auput import app
 from Auput.utils.inlinequery import answer
-
+from Auput.utils.bk import command
 
 @app.on_inline_query(~BANNED_USERS)
 async def inline_query_handler(client, query):
