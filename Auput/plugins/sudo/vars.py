@@ -4,6 +4,7 @@ from pyrogram import filters
 
 import config
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import app
 from Auput.misc import SUDOERS
 from Auput.utils.database.memorydatabase import get_video_limit
