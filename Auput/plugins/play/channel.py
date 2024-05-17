@@ -3,6 +3,7 @@ from pyrogram.enums import ChatMembersFilter, ChatMemberStatus, ChatType
 from pyrogram.types import Message
 
 from config import BANNED_USERS
+from Auput.utils.bk import command
 from strings import get_command
 from Auput import app
 from Auput.utils.database import set_cmode
