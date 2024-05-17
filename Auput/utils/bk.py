@@ -6,5 +6,5 @@ from config import COMMAND_PREFIXES
 
 
 
-def filters.command(commands: Union[str, List[str]]):
+def command(commands: Union[str, List[str]]):
     return filters.command(commands, COMMAND_PREFIXES)
