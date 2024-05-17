@@ -4,6 +4,7 @@ from pyrogram import filters
 from strings import get_command
 from Auput import app
 from Auput.misc import SUDOERS
+from Auput.utils.bk import command
 
 # Commands
 SPEEDTEST_COMMAND = get_command("SPEEDTEST_COMMAND")
