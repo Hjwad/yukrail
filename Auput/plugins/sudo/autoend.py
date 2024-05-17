@@ -6,6 +6,7 @@ from Auput import app
 from Auput.misc import SUDOERS
 from Auput.utils.database import autoend_off, autoend_on
 from Auput.utils.decorators.language import language
+from Auput.utils.bk import command
 
 # Commands
 AUTOEND_COMMAND = get_command("AUTOEND_COMMAND")
