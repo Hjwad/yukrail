@@ -10,7 +10,7 @@ LANGUAGE_COMMAND : ["lang", "language", "langs", "لغه", "اللغه"]
 
 # Play Commands
 PLAY_COMMAND : ["play", "تشغيل","شغل", "vplay", "cplay", "cvplay", "playforce", "vplayforce", "cplayforce", "cvplayforce"]
-PLAYMODE_COMMAND : ["playmode", "/وضع شغل", "وضع شغل", "/playmode"]
+PLAYMODE_COMMAND : ["playmode", "/وضع تشغل", "وضع شغل", "/playmode"]
 CHANNELPLAY_COMMAND : ["channelplay","ربط قناة"]
 STREAM_COMMAND : ["stream", "cstream", "streamforce","لايف"]
 
@@ -27,7 +27,7 @@ LYRICS_COMMAND : ["lyrics", "كلمات"]
 # Admin Commands
 AUTH_COMMAND : ["auth", "رفع ادمن"]
 UNAUTH_COMMAND : ["unauth", "ت ادمن"]
-AUTHUSERS_COMMAND : ["authusers", "الادمن"]
+AUTHUSERS_COMMAND : ["authusers", "الادمنيه"]
 PAUSE_COMMAND : ["pause", "cpause", "وقف", "#وقف", "/pause", "/cpause", "/وقف", "/ق وقف"]
 RESUME_COMMAND : ["resume", "cresume", "كمل", "#كمل", "/resume", "/cresume", "/ق كمل", "كمل", "#كملي"]
 MUTE_COMMAND : ["mute", "cmute", "اسكت", "#اسكت", "/mute", "/cmute", "/اسكت", "/ق اسكت"]
@@ -51,7 +51,7 @@ SUDOUSERS_COMMAND : ["sudolist", "المطورين"]
 BROADCAST_COMMAND : ["broadcast","اذاعة"]
 
 #Blacklist chat
-BLACKLISTCHAT_COMMAND : ["blacklistchat"]
+BLACKLISTCHAT_COMMAND : ["blacklistchat","المجموعات المحظورة"]
 WHITELISTCHAT_COMMAND : ["whitelistchat"]
 BLACKLISTEDCHAT_COMMAND : ["blacklistedchat"]
 
