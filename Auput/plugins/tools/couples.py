@@ -6,6 +6,7 @@ from PIL import Image , ImageDraw
 from pyrogram import *
 from pyrogram.types import *
 from pyrogram.enums import *
+from Auput.utils.bk import command
 
 #BOT FILE NAME
 from Auput import app as app
