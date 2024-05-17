@@ -6,7 +6,7 @@ from pyrogram.types import Message
 from Auput import app
 from Auput.mongo.readable_time import get_readable_time
 from Auput.mongo.afkdb import add_afk, is_afk, remove_afk
-
+from Auput.utils.bk import command
 
 
 @app.on_message(filters.command(["afk", "brb"], prefixes=["/", "!"]))
