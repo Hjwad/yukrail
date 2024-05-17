@@ -10,6 +10,7 @@ import config
 from config import BANNED_USERS
 from config import OWNER_ID
 from strings import get_command, get_string
+from Auput.utils.bk import command
 from Auput import Telegram, YouTube, app
 from Auput.misc import SUDOERS
 from Auput.plugins.play.playlist import del_plist_msg
