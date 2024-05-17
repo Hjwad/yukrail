@@ -3,6 +3,7 @@ from pyrogram import filters
 from config import BANNED_USERS
 from Auput import YouTube, app
 from Auput.utils.channelplay import get_channeplayCB
+from Auput.utils.bk import command
 from Auput.utils.decorators.language import languageCB
 from Auput.utils.stream.stream import stream
 
