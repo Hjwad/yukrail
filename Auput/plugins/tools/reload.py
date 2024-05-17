@@ -6,6 +6,7 @@ from pyrogram.types import CallbackQuery, Message
 
 from config import BANNED_USERS, MUSIC_BOT_NAME, adminlist, lyrical
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import app
 from Auput.core.call import Auput
 from Auput.misc import db
