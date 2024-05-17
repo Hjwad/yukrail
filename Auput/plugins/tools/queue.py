@@ -9,6 +9,7 @@ from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
 import config
 from config import BANNED_USERS
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import app
 from Auput.misc import db
 from Auput.utils import (AuputBin, get_channeplayCB,
