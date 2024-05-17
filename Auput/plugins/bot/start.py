@@ -1,14 +1,25 @@
+
+
+#
+# Copyright (C) 2023-2024 by AuputOwner@Github, < https://github.com/AuputOwner >.
+#
+# This file is part of < https://github.com/AuputOwner/AuputBot > project,
+# and is released under the "GNU v3.0 License Agreement".
+# Please see < https://github.com/AuputOwner/AuputBot/blob/master/LICENSE >
+#
+# All rights reserved.
+#
+
 import asyncio
 
-from pyrogram import filters
-from pyrogram.enums import ChatType, ParseMode
+from pyrogram import enums, filters
 from pyrogram.types import (InlineKeyboardButton,
                             InlineKeyboardMarkup, Message)
 from youtubesearchpython.__future__ import VideosSearch
 
 import config
 from config import BANNED_USERS
-from config import OWNER_ID
+from config.config import OWNER_ID
 from strings import get_command, get_string
 from Auput.utils.bk import command
 from Auput import Telegram, YouTube, app
@@ -28,9 +39,8 @@ from Auput.utils.inline import (help_pannel, private_panel,
 loop = asyncio.get_running_loop()
 
 
-
 @app.on_message(
-    command(get_command("START_COMMAND"))
+    filters.command(get_command("START_COMMAND"))
     & filters.private
     & ~BANNED_USERS
 )
@@ -40,7 +50,7 @@ async def start_comm(client, message: Message, _):
     if len(message.text.split()) > 1:
         name = message.text.split(None, 1)[1]
         if name[0:4] == "help":
-            keyboard = first_page(_)
+            keyboard = help_pannel(_)
             return await message.reply_text(
                 _["help_1"], reply_markup=keyboard
             )
@@ -169,7 +179,7 @@ async def start_comm(client, message: Message, _):
                 message.chat.id,
                 photo=thumbnail,
                 caption=searched_text,
-                parse_mode=ParseMode.MARKDOWN,
+                parse_mode="markdown",
                 reply_markup=key,
             )
             if await is_on_off(config.LOG):
@@ -250,7 +260,7 @@ async def welcome(client, message: Message):
             _ = get_string(language)
             if member.id == app.id:
                 chat_type = message.chat.type
-                if chat_type != ChatType.SUPERGROUP:
+                if chat_type != enums.ChatType.SUPERGROUP:
                     await message.reply_text(_["start_6"])
                     return await app.leave_chat(message.chat.id)
                 if chat_id in await blacklisted_chats():
