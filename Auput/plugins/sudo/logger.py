@@ -2,6 +2,7 @@ from pyrogram import filters
 
 import config
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import app
 from Auput.misc import SUDOERS
 from Auput.utils.database import add_off, add_on
