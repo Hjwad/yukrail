@@ -17,6 +17,7 @@ from pytgcalls.exceptions import NoActiveGroupCall
 import config
 from config import BANNED_USERS, lyrical
 from strings import get_command
+from Auput.utils.bk import command
 from Auput import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
 from Auput.core.call import Auput
 from Auput.utils import seconds_to_min, time_to_seconds
