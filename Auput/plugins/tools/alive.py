@@ -7,7 +7,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from config import MUSIC_BOT_NAME, OWNER_USERNAME, SUPPORT_CHANNEL
 from Auput.utils.bk import command
 
-@app.on_message(filters.command("alive", ["/", ".", "!"]))
+@app.on_message(filters.command("سورس", ["/", ".", "!",""]))
 async def kontolmasukmemek(client: Client, message: Message):
     await message.reply_video(
         video=f"https://telegra.ph//file/bbf47a387de772dd6a555.mp4",
