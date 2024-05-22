@@ -12,28 +12,28 @@ SPAM_CHATS = {}
 
 
 @app.on_message(
-    filters.command(["utag", "uall"], prefixes=["/", "@", ".", "#"]) & admin_filter
+    filters.command(["utag", "uall","نداء","تاك"], prefixes=["/", "@", ".", "#",""]) & admin_filter
 )
 async def tag_all_users(_, message):
     global SPAM_CHATS
     chat_id = message.chat.id
     if len(message.text.split()) == 1:
         await message.reply_text(
-            "** ɢɪᴠᴇ sᴏᴍᴇ ᴛᴇxᴛ ᴛᴏ ᴛᴀɢ ᴀʟʟ, ʟɪᴋᴇ »** `@utag Hi Friends`"
+            "** اضف الكلام مع تاك, ʟɪᴋᴇ »** `تاك اشتقت لك`"
         )
         return
 
     text = message.text.split(None, 1)[1]
     if text:
         await message.reply_text(
-            "**ᴜᴛᴀɢ [ᴜɴʟɪᴍɪᴛᴇᴅ ᴛᴀɢ] sᴛᴀʀᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ!**\n\n**๏ ᴛᴀɢɢɪɴɢ ᴡɪᴛʜ sʟᴇᴇᴘ ᴏғ 7 sᴇᴄ.**\n\n**➥ ᴏғғ ᴛᴀɢɢɪɴɢ ʙʏ » /stoputag**"
+            "**تاك [تاك مستمر] تم بنجاح!**\n\n**๏ تاك كُل سبع ثواني.**\n\n**➥ يمكنك ايقاق التاك بواسطة » ايقاف تاك**"
         )
 
     SPAM_CHATS[chat_id] = True
     f = True
     while f:
         if SPAM_CHATS.get(chat_id) == False:
-            await message.reply_text("**ᴜɴʟɪᴍɪᴛᴇᴅ ᴛᴀɢɢɪɴɢ sᴜᴄᴄᴇssғᴜʟʟʏ sᴛᴏᴘᴘᴇᴅ.**")
+            await message.reply_text("**تم ايقاف التاك بنجاح.**")
             break
         usernum = 0
         usertxt = ""
@@ -46,7 +46,7 @@ async def tag_all_users(_, message):
                 if usernum == 5:
                     await app.send_message(
                         message.chat.id,
-                        f"{text}\n{usertxt}\n\n|| ➥ ᴏғғ ᴛᴀɢɢɪɴɢ ʙʏ » /stoputag ||",
+                        f"{text}\n{usertxt}\n\n|| ➥ ايقاف تاك بواسطة » ايقاف تاك ||",
                     )
                     usernum = 0
                     usertxt = ""
