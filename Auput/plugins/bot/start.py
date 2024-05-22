@@ -21,6 +21,7 @@ from Auput.utils.database import (add_served_chat,
                                        get_userss, is_on_off,
                                        is_served_private_chat)
 from Auput.utils.decorators.language import LanguageStart
+from Auput.utils import first_page
 from Auput.utils.inline import (help_pannel, private_panel,
                                      start_pannel)
 
