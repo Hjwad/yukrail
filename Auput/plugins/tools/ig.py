@@ -31,7 +31,7 @@ SPAM_WINDOW_SECONDS = 5
 # -------------------------------------------------------------------------------
 
 
-@app.on_Message(filters.command("song"))
+@app.on_message(filters.command("song"))
 async def download_song(_, Message):
     user_id = Message.from_user.id
     current_time = time()
@@ -115,7 +115,7 @@ async def download_song(_, Message):
 ###### INSTAGRAM REELS DOWNLOAD
 
 
-@app.on_Message(filters.command(["ig"], ["/", "!", "."]))
+@app.on_message(filters.command(["ig"], ["/", "!", "."]))
 async def download_instareels(c: app, m: Message):
     user_id = Message.from_user.id
     current_time = time()
@@ -169,7 +169,7 @@ async def download_instareels(c: app, m: Message):
 ######
 
 
-@app.on_Message(filters.command(["reel"], ["/", "!", "."]))
+@app.on_message(filters.command(["reel"], ["/", "!", "."]))
 async def instagram_reel(client, Message):
     user_id = Message.from_user.id
     current_time = time()
