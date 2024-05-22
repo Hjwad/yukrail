@@ -19,14 +19,14 @@ async def tag_all_users(_, message):
     chat_id = message.chat.id
     if len(message.text.split()) == 1:
         await message.reply_text(
-            "** اضف الكلام مع تاك, ʟɪᴋᴇ »** `تاك اشتقت لك`"
+            "** اضف الكلام مع تاك, مثال »** `تاك اشتقت لك`"
         )
         return
 
     text = message.text.split(None, 1)[1]
     if text:
         await message.reply_text(
-            "**تاك [تاك مستمر] تم بنجاح!**\n\n**๏ تاك كُل سبع ثواني.**\n\n**➥ يمكنك ايقاق التاك بواسطة » ايقاف تاك**"
+            "**تاك [تاك مستمر] تم بنجاح!**\n\n**๏ تاك كُل سبع ثواني.**\n\n**➥ يمكنك ايقاق التاك بواسطة » `ايقاف تاك`**"
         )
 
     SPAM_CHATS[chat_id] = True
@@ -43,7 +43,7 @@ async def tag_all_users(_, message):
                     continue
                 usernum += 1
                 usertxt += f"\n⊚ [{m.user.first_name}](tg://user?id={m.user.id})\n"
-                if usernum == 5:
+                if usernum == 1:
                     await app.send_message(
                         message.chat.id,
                         f"{text}\n{usertxt}\n\n|| ➥ ايقاف تاك بواسطة » ايقاف تاك ||",
@@ -58,7 +58,7 @@ async def tag_all_users(_, message):
 @app.on_message(
     filters.command(
         ["stoputag", "stopuall", "offutag", "offuall", "utagoff", "ualloff"],
-        prefixes=["/", ".", "@", "#"],
+        prefixes=["/", ".", "@", "#",""],
     )
     & admin_filter
 )
@@ -67,6 +67,6 @@ async def stop_tagging(_, message):
     chat_id = message.chat.id
     if SPAM_CHATS.get(chat_id) == True:
         SPAM_CHATS[chat_id] = False
-        return await message.reply_text("**ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ sᴛᴏᴘᴘɪɴɢ ᴜɴʟɪᴍɪᴛᴇᴅ ᴛᴀɢɢɪɴɢ...**")
+        return await message.reply_text("**الرجاء الانتضار لأيقاف التاك ...**")
     else:
         await message.reply_text("**ᴜᴛᴀɢ ᴘʀᴏᴄᴇss ɪs ɴᴏᴛ ᴀᴄᴛɪᴠᴇ**")
