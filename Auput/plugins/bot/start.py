@@ -29,11 +29,12 @@ from Auput.utils.inline import (help_pannel, private_panel,
 loop = asyncio.get_running_loop()
 START_COMMAND = get_command("START_COMMAND")
 
+
 @app.on_message(
-    command(get_command("START_COMMAND"))
+    command(START_COMMAND)
     & filters.private
     & ~BANNED_USERS
-)
+
 @LanguageStart
 async def start_comm(client, message: Message, _):
     await add_served_user(message.from_user.id)
@@ -215,10 +216,10 @@ async def start_comm(client, message: Message, _):
 
 
 @app.on_message(
-    command(get_command("START_COMMAND"))
-    & filters.group
+    command(START_COMMAND)
+    & filters.private
     & ~BANNED_USERS
-)
+
 @LanguageStart
 async def testbot(client, message: Message, _):
     out = start_pannel(_)
