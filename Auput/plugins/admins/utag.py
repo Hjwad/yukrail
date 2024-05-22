@@ -26,7 +26,7 @@ async def tag_all_users(_, message):
     text = message.text.split(None, 1)[1]
     if text:
         await message.reply_text(
-            "**تاك [تاك مستمر] تم بنجاح!**\n\n**๏ تاك كُل سبع ثواني.**\n\n**➥ يمكنك ايقاق التاك بواسطة » `ايقاف تاك`**"
+            "**تاك [تاك مستمر] تم بنجاح!**\n\n**๏ تاك كُل سبع ثواني.**\n\n**➥ يمكنك ايقاق التاك بواسطة » `تعطيل تاك`**"
         )
 
     SPAM_CHATS[chat_id] = True
@@ -46,7 +46,7 @@ async def tag_all_users(_, message):
                 if usernum == 1:
                     await app.send_message(
                         message.chat.id,
-                        f"{text}\n{usertxt}\n\n|| ➥ ايقاف تاك بواسطة » ايقاف تاك ||",
+                        f"{text}\n{usertxt}\n\n|| ➥ ايقاف تاك بواسطة » تعطيل تاك ||",
                     )
                     usernum = 0
                     usertxt = ""
@@ -57,7 +57,7 @@ async def tag_all_users(_, message):
 
 @app.on_message(
     filters.command(
-        ["stoputag", "stopuall", "offutag", "offuall", "utagoff", "ualloff","ايقاف تاك"],
+        ["stoputag", "stopuall", "offutag", "offuall", "utagoff", "ualloff","تعطيل التاك","تعطيل تاك","تعطيل النداء","تعطيل نداء"],
         prefixes=["/", ".", "@", "#",""],
     )
     & admin_filter
