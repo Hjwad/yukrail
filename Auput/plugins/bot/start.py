@@ -27,11 +27,10 @@ from Auput.utils.inline import (help_pannel, private_panel,
                                      start_pannel)
 
 loop = asyncio.get_running_loop()
-START_COMMAND = get_command("START_COMMAND")
 
 
 @app.on_message(
-    filters.command(START_COMMAND)
+    command(get_command("START_COMMAND"))
     & filters.private
     & ~BANNED_USERS
 )
@@ -216,8 +215,8 @@ async def start_comm(client, message: Message, _):
 
 
 @app.on_message(
-    filters.command(START_COMMAND)
-    & filters.private
+    command(get_command("START_COMMAND"))
+    & filters.group
     & ~BANNED_USERS
 )
 @LanguageStart
