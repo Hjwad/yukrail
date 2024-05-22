@@ -5,6 +5,7 @@ from pyrogram.types import InlineKeyboardMarkup, Message
 
 from config import BANNED_USERS, START_IMG_URL
 from strings import get_command, get_string, helpers
+from Auput.utils.bk import command
 from Auput import app
 from Auput.misc import SUDOERS
 from Auput.utils import first_page, second_page
