@@ -111,3 +111,7 @@ async def helper_cb(client, CallbackQuery, _):
 
 @app.on_callback_query(filters.regex("AuputSecpg") & ~BANNED_USERS)
 @languageCB
+        await CallbackQuery.message.edit_text(_["help_1"], reply_markup=menu_next)
+        return
+    except:
+        return
