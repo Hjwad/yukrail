@@ -33,6 +33,7 @@ START_COMMAND = get_command("START_COMMAND")
 @app.on_message(
     command(START_COMMAND)
     & filters.private
+    & filters.group
     & ~BANNED_USERS
 )
 @LanguageStart
@@ -218,6 +219,7 @@ async def start_comm(client, message: Message, _):
 @app.on_message(
     command(START_COMMAND)
     & filters.private
+    & filters.group
     & ~BANNED_USERS
 )
 @LanguageStart
