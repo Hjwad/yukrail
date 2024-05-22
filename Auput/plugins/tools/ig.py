@@ -19,8 +19,8 @@ from time import time
 import asyncio
 from Auput.utils.extraction import extract_user
 
-# Define a dictionary to track the last message timestamp for each user
-user_last_message_time = {}
+# Define a dictionary to track the last Message timestamp for each user
+user_last_Message_time = {}
 user_command_count = {}
 # Define the threshold for command spamming (e.g., 20 commands within 60 seconds)
 SPAM_THRESHOLD = 2
@@ -31,33 +31,33 @@ SPAM_WINDOW_SECONDS = 5
 # -------------------------------------------------------------------------------
 
 
-@app.on_message(filters.command("song"))
-async def download_song(_, message):
-    user_id = message.from_user.id
+@app.on_Message(filters.command("song"))
+async def download_song(_, Message):
+    user_id = Message.from_user.id
     current_time = time()
-    # Update the last message timestamp for the user
-    last_message_time = user_last_message_time.get(user_id, 0)
+    # Update the last Message timestamp for the user
+    last_Message_time = user_last_Message_time.get(user_id, 0)
 
-    if current_time - last_message_time < SPAM_WINDOW_SECONDS:
-        # If less than the spam window time has passed since the last message
-        user_last_message_time[user_id] = current_time
+    if current_time - last_Message_time < SPAM_WINDOW_SECONDS:
+        # If less than the spam window time has passed since the last Message
+        user_last_Message_time[user_id] = current_time
         user_command_count[user_id] = user_command_count.get(user_id, 0) + 1
         if user_command_count[user_id] > SPAM_THRESHOLD:
             # Block the user if they exceed the threshold
-            hu = await message.reply_text(
-                f"**{message.from_user.mention} ᴘʟᴇᴀsᴇ ᴅᴏɴᴛ ᴅᴏ sᴘᴀᴍ, ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ ᴀғᴛᴇʀ 5 sᴇᴄ**"
+            hu = await Message.reply_text(
+                f"**{Message.from_user.mention} ᴘʟᴇᴀsᴇ ᴅᴏɴᴛ ᴅᴏ sᴘᴀᴍ, ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ ᴀғᴛᴇʀ 5 sᴇᴄ**"
             )
             await asyncio.sleep(3)
             await hu.delete()
             return
     else:
-        # If more than the spam window time has passed, reset the command count and update the message timestamp
+        # If more than the spam window time has passed, reset the command count and update the Message timestamp
         user_command_count[user_id] = 1
-        user_last_message_time[user_id] = current_time
+        user_last_Message_time[user_id] = current_time
 
-    query = " ".join(message.command[1:])
+    query = " ".join(Message.command[1:])
     print(query)
-    m = await message.reply("**🔄 sᴇᴀʀᴄʜɪɴɢ... **")
+    m = await Message.reply("**🔄 sᴇᴀʀᴄʜɪɴɢ... **")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -91,11 +91,11 @@ async def download_song(_, message):
             secmul *= 60
         await m.edit("**📤 ᴜᴘʟᴏᴀᴅɪɴɢ...**")
 
-        await message.reply_audio(
+        await Message.reply_audio(
             audio_file,
             thumb=thumb_name,
             title=title,
-            caption=f"{title}\nRᴇǫᴜᴇsᴛᴇᴅ ʙʏ ➪{message.from_user.mention}\nVɪᴇᴡs➪ {views}\nCʜᴀɴɴᴇʟ➪ {channel_name}",
+            caption=f"{title}\nRᴇǫᴜᴇsᴛᴇᴅ ʙʏ ➪{Message.from_user.mention}\nVɪᴇᴡs➪ {views}\nCʜᴀɴɴᴇʟ➪ {channel_name}",
             duration=dur,
         )
         await m.delete()
@@ -115,29 +115,29 @@ async def download_song(_, message):
 ###### INSTAGRAM REELS DOWNLOAD
 
 
-@app.on_message(filters.command(["ig"], ["/", "!", "."]))
+@app.on_Message(filters.command(["ig"], ["/", "!", "."]))
 async def download_instareels(c: app, m: Message):
-    user_id = message.from_user.id
+    user_id = Message.from_user.id
     current_time = time()
-    # Update the last message timestamp for the user
-    last_message_time = user_last_message_time.get(user_id, 0)
+    # Update the last Message timestamp for the user
+    last_Message_time = user_last_Message_time.get(user_id, 0)
 
-    if current_time - last_message_time < SPAM_WINDOW_SECONDS:
-        # If less than the spam window time has passed since the last message
-        user_last_message_time[user_id] = current_time
+    if current_time - last_Message_time < SPAM_WINDOW_SECONDS:
+        # If less than the spam window time has passed since the last Message
+        user_last_Message_time[user_id] = current_time
         user_command_count[user_id] = user_command_count.get(user_id, 0) + 1
         if user_command_count[user_id] > SPAM_THRESHOLD:
             # Block the user if they exceed the threshold
-            hu = await message.reply_text(
-                f"**{message.from_user.mention} ᴘʟᴇᴀsᴇ ᴅᴏɴᴛ ᴅᴏ sᴘᴀᴍ, ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ ᴀғᴛᴇʀ 5 sᴇᴄ**"
+            hu = await Message.reply_text(
+                f"**{Message.from_user.mention} ᴘʟᴇᴀsᴇ ᴅᴏɴᴛ ᴅᴏ sᴘᴀᴍ, ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ ᴀғᴛᴇʀ 5 sᴇᴄ**"
             )
             await asyncio.sleep(3)
             await hu.delete()
             return
     else:
-        # If more than the spam window time has passed, reset the command count and update the message timestamp
+        # If more than the spam window time has passed, reset the command count and update the Message timestamp
         user_command_count[user_id] = 1
-        user_last_message_time[user_id] = current_time
+        user_last_Message_time[user_id] = current_time
 
     try:
         reel_ = m.command[1]
@@ -169,32 +169,32 @@ async def download_instareels(c: app, m: Message):
 ######
 
 
-@app.on_message(filters.command(["reel"], ["/", "!", "."]))
-async def instagram_reel(client, message):
-    user_id = message.from_user.id
+@app.on_Message(filters.command(["reel"], ["/", "!", "."]))
+async def instagram_reel(client, Message):
+    user_id = Message.from_user.id
     current_time = time()
-    # Update the last message timestamp for the user
-    last_message_time = user_last_message_time.get(user_id, 0)
+    # Update the last Message timestamp for the user
+    last_Message_time = user_last_Message_time.get(user_id, 0)
 
-    if current_time - last_message_time < SPAM_WINDOW_SECONDS:
-        # If less than the spam window time has passed since the last message
-        user_last_message_time[user_id] = current_time
+    if current_time - last_Message_time < SPAM_WINDOW_SECONDS:
+        # If less than the spam window time has passed since the last Message
+        user_last_Message_time[user_id] = current_time
         user_command_count[user_id] = user_command_count.get(user_id, 0) + 1
         if user_command_count[user_id] > SPAM_THRESHOLD:
             # Block the user if they exceed the threshold
-            hu = await message.reply_text(
-                f"**{message.from_user.mention} ᴘʟᴇᴀsᴇ ᴅᴏɴᴛ ᴅᴏ sᴘᴀᴍ, ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ ᴀғᴛᴇʀ 5 sᴇᴄ**"
+            hu = await Message.reply_text(
+                f"**{Message.from_user.mention} ᴘʟᴇᴀsᴇ ᴅᴏɴᴛ ᴅᴏ sᴘᴀᴍ, ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ ᴀғᴛᴇʀ 5 sᴇᴄ**"
             )
             await asyncio.sleep(3)
             await hu.delete()
             return
     else:
-        # If more than the spam window time has passed, reset the command count and update the message timestamp
+        # If more than the spam window time has passed, reset the command count and update the Message timestamp
         user_command_count[user_id] = 1
-        user_last_message_time[user_id] = current_time
+        user_last_Message_time[user_id] = current_time
 
-    if len(message.command) == 2:
-        url = message.command[1]
+    if len(Message.command) == 2:
+        url = Message.command[1]
         response = requests.post(
             f"https://lexica-api.vercel.app/download/instagram?url={url}"
         )
@@ -204,14 +204,14 @@ async def instagram_reel(client, message):
             media_urls = data["content"]["mediaUrls"]
             if media_urls:
                 video_url = media_urls[0]["url"]
-                await message.reply_video(f"{video_url}")
+                await Message.reply_video(f"{video_url}")
             else:
-                await message.reply(
+                await Message.reply(
                     "No video found in the response. may be accountbis private."
                 )
         else:
-            await message.reply("Request was not successful.")
+            await Message.reply("Request was not successful.")
     else:
-        await message.reply(
+        await Message.reply(
             "Please provide a valid Instagram URL using the /reels command."
         )
