@@ -8,7 +8,7 @@ from pytgcalls.exceptions import NoActiveGroupCall
 from Auput.utils.database import get_assistant
 import config
 from Auput import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from Auput.core.call import VIP
+from Auput.core.call import Auput
 from Auput.misc import SUDOERS
 from Auput.utils.inline import panel_markup_clone
 from Auput.utils import seconds_to_min, time_to_seconds
@@ -387,7 +387,7 @@ async def play_commnd(
             return await mystic.delete()
         else:
             try:
-                await VIP.stream_call(url)
+                await Auput.stream_call(url)
             except NoActiveGroupCall:
                 await mystic.edit_text(_["black_9"])
                 return await client.send_message(
@@ -618,8 +618,8 @@ async def play_music(client: Client, CallbackQuery, _):
     return await mystic.delete()
 
 
-@Client.on_callback_query(filters.regex("VIPmousAdmin") & ~BANNED_USERS)
-async def VIPmous_check(client: Client, CallbackQuery):
+@Client.on_callback_query(filters.regex("AuputmousAdmin") & ~BANNED_USERS)
+async def Auputmous_check(client: Client, CallbackQuery):
     try:
         await CallbackQuery.answer(
             "» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ :\n\nᴏᴘᴇɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ sᴇᴛᴛɪɴɢs.\n-> ᴀᴅᴍɪɴɪsᴛʀᴀᴛᴏʀs\n-> ᴄʟɪᴄᴋ ᴏɴ ʏᴏᴜʀ ɴᴀᴍᴇ\n-> ᴜɴᴄʜᴇᴄᴋ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ᴘᴇʀᴍɪssɪᴏɴs.",
@@ -629,7 +629,7 @@ async def VIPmous_check(client: Client, CallbackQuery):
         pass
 
 
-@Client.on_callback_query(filters.regex("VIPPlaylists") & ~BANNED_USERS)
+@Client.on_callback_query(filters.regex("AuputPlaylists") & ~BANNED_USERS)
 @languageCB
 async def play_playlists_command(client: Client, CallbackQuery, _):
     callback_data = CallbackQuery.data.strip()
@@ -773,7 +773,7 @@ from pyrogram.types import InlineKeyboardMarkup
 
 import config
 from Auput import Carbon, YouTube
-from Auput.core.call import VIP
+from Auput.core.call import Auput
 from Auput.misc import db
 from Auput.utils.database import add_active_video_chat, is_active_chat
 from Auput.utils.exceptions import AssistantErr
@@ -785,7 +785,7 @@ from Auput.utils.inline import (
     stream_markup2,
     panel_markup_4,
 )
-from Auput.utils.pastebin import VIPBin
+from Auput.utils.pastebin import AuputBin
 from Auput.utils.stream.queue import put_queue, put_queue_index
 from youtubesearchpython.__future__ import VideosSearch
 
@@ -807,7 +807,7 @@ async def stream(
     if not result:
         return
     if forceplay:
-        await VIP.force_stop_stream(chat_id)
+        await Auput.force_stop_stream(chat_id)
     if streamtype == "playlist":
         msg = f"{_['play_19']}\n\n"
         count = 0
@@ -855,7 +855,7 @@ async def stream(
                 except:
 
                     os.system(f"kill -9 {os.getpid()} && bash start")
-                await VIP.join_call(
+                await Auput.join_call(
                     chat_id,
                     original_chat_id,
                     file_path,
@@ -894,7 +894,7 @@ async def stream(
         if count == 0:
             return
         else:
-            link = await VIPBin(msg)
+            link = await AuputBin(msg)
             lines = msg.count("\n")
             if lines >= 17:
                 car = os.linesep.join(msg.split(os.linesep)[:17])
@@ -948,7 +948,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await VIP.join_call(
+            await Auput.join_call(
                 chat_id,
                 original_chat_id,
                 file_path,
@@ -1010,7 +1010,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await VIP.join_call(chat_id, original_chat_id, file_path, video=None)
+            await Auput.join_call(chat_id, original_chat_id, file_path, video=None)
             await put_queue(
                 chat_id,
                 original_chat_id,
@@ -1062,7 +1062,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await VIP.join_call(chat_id, original_chat_id, file_path, video=status)
+            await Auput.join_call(chat_id, original_chat_id, file_path, video=status)
             await put_queue(
                 chat_id,
                 original_chat_id,
@@ -1118,7 +1118,7 @@ async def stream(
             n, file_path = await YouTube.video(link)
             if n == 0:
                 raise AssistantErr(_["str_3"])
-            await VIP.join_call(
+            await Auput.join_call(
                 chat_id,
                 original_chat_id,
                 file_path,
@@ -1175,7 +1175,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await VIP.join_call(
+            await Auput.join_call(
                 chat_id,
                 original_chat_id,
                 link,
