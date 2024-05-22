@@ -34,7 +34,7 @@ START_COMMAND = get_command("START_COMMAND")
     command(START_COMMAND)
     & filters.private
     & ~BANNED_USERS
-
+)
 @LanguageStart
 async def start_comm(client, message: Message, _):
     await add_served_user(message.from_user.id)
@@ -219,7 +219,7 @@ async def start_comm(client, message: Message, _):
     command(START_COMMAND)
     & filters.private
     & ~BANNED_USERS
-
+)
 @LanguageStart
 async def testbot(client, message: Message, _):
     out = start_pannel(_)
