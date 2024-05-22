@@ -13,6 +13,7 @@ from strings import get_command, get_string
 from Auput import Telegram, YouTube, app
 from Auput.misc import SUDOERS
 from Auput.plugins.play.playlist import del_plist_msg
+from Auput.utils.bk import command
 from Auput.plugins.sudo.sudoers import sudoers_list
 from Auput.utils.database import (add_served_chat,
                                        add_served_user,
