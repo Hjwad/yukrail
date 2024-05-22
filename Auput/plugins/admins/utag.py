@@ -46,8 +46,7 @@ async def tag_all_users(_, message):
                 if usernum == 1:
                     await app.send_message(
                         message.chat.id,
-                        f"{text}\n{usertxt}\n\n|| ➥ ايقاف تاك بواسطة » تعطيل تاك ||",
-                    )
+                        f"{text}\n{usertxt}")
                     usernum = 0
                     usertxt = ""
                     await asyncio.sleep(7)
