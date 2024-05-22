@@ -5,7 +5,9 @@ from pyrogram.types import InputMediaPhoto
 from Auput.utils.bk import command
 
 
-@app.on_message(filters.command(["tgm" , "link"]))
+@app.on_message(
+    filters.command(["tg","تليجراف"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
+)
 def ul(_, message):
     reply = message.reply_to_message
     if reply.media:
