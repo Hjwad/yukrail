@@ -774,7 +774,6 @@ from Auput.utils.exceptions import AssistantErr
 from Auput.utils.inline import (
     close_markup,
     stream_markup,
-    stream_markup2,
     panel_markup_4,
 )
 from Auput.utils.pastebin import AuputBin
