@@ -772,7 +772,6 @@ from Auput.misc import db
 from Auput.utils.database import add_active_video_chat, is_active_chat
 from Auput.utils.exceptions import AssistantErr
 from Auput.utils.inline import (
-    aq_markup,
     queuemarkup,
     close_markup,
     stream_markup,
