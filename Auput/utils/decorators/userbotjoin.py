@@ -21,11 +21,11 @@ from Auput.utils.database import (
     is_maintenance,
 )
 from Auput.utils.inline import botplaylist_markup
-from config import PLAYLIST_IMG_URL, SUPPORT_CHAT, adminlist
+from config import PLAYLIST_IMG_URL, SUPPORT_GROUP, adminlist
 from strings import get_string
 
 links = {}
-
+SUPPORT_GROUP
 
 def UserbotWrapper(command):
     async def wrapper(client, message):
@@ -35,7 +35,7 @@ def UserbotWrapper(command):
         if await is_maintenance() is False:
             if message.from_user.id not in SUDOERS:
                 return await message.reply_text(
-                    text=f"{app.mention} is under maintenance, visit [support chat]({SUPPORT_CHAT}) for knowing the reason.",
+                    text=f"{app.mention} is under maintenance, visit [support chat]({SUPPORT_GROUP}) for knowing the reason.",
                     disable_web_page_preview=True,
                 )
 
