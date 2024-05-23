@@ -37,7 +37,7 @@ from strings import get_command
 from Auput.utils.extraction import extract_user
 
 @app.on_message(
-     command(
+     filters.command(
         [
             "play",
             "شغل",
