@@ -20,7 +20,7 @@ def changeImageSize(maxWidth, maxHeight, image):
     return newImage
 
 
-async def gen_thumb(videoid):
+async def get_thumb(videoid):
     if os.path.isfile(f"cache/{videoid}.png"):
         return f"cache/{videoid}.png"
 
@@ -49,7 +49,7 @@ async def gen_thumb(videoid):
                 channel = "Unknown Channel"
 
         async with aiohttp.ClientSession() as session:
-            async with session.gen(thumbnail) as resp:
+            async with session.get(thumbnail) as resp:
                 if resp.status == 200:
                     f = await aiofiles.open(
                         f"cache/thumb{videoid}.png", mode="wb"
