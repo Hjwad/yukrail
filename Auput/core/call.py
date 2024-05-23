@@ -22,9 +22,9 @@ from pytgcalls.types import (
 from pytgcalls.types.stream import StreamAudioEnded
 
 import config
-from VIPMUSIC import LOGGER, YouTube, app
-from VIPMUSIC.misc import db
-from VIPMUSIC.utils.database import (
+from Auput import LOGGER, YouTube, app
+from Auput.misc import db
+from Auput.utils.database import (
     add_active_chat,
     add_active_video_chat,
     get_lang,
@@ -36,11 +36,11 @@ from VIPMUSIC.utils.database import (
     remove_active_video_chat,
     set_loop,
 )
-from VIPMUSIC.utils.exceptions import AssistantErr
-from VIPMUSIC.utils.formatters import check_duration, seconds_to_min, speed_converter
-from VIPMUSIC.utils.inline.play import stream_markup, telegram_markup
-from VIPMUSIC.utils.stream.autoclear import auto_clean
-from VIPMUSIC.utils.thumbnails import gen_thumb
+from Auput.utils.exceptions import AssistantErr
+from Auput.utils.formatters import check_duration, seconds_to_min, speed_converter
+from Auput.utils.inline.play import stream_markup, telegram_markup
+from Auput.utils.stream.autoclear import auto_clean
+from Auput.utils.thumbnails import gen_thumb
 from strings import get_string
 
 autoend = {}
@@ -57,7 +57,7 @@ async def _clear_(chat_id):
 class Call(PyTgCalls):
     def __init__(self):
         self.userbot1 = Client(
-            name="VIPAss1",
+            name="Auput1",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING1),
@@ -67,7 +67,7 @@ class Call(PyTgCalls):
             cache_duration=100,
         )
         self.userbot2 = Client(
-            name="VIPAss2",
+            name="Auput2",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING2),
@@ -77,7 +77,7 @@ class Call(PyTgCalls):
             cache_duration=100,
         )
         self.userbot3 = Client(
-            name="VIPAss3",
+            name="Auput3",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING3),
@@ -87,7 +87,7 @@ class Call(PyTgCalls):
             cache_duration=100,
         )
         self.userbot4 = Client(
-            name="VIPAss4",
+            name="Auput4",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING4),
@@ -97,7 +97,7 @@ class Call(PyTgCalls):
             cache_duration=100,
         )
         self.userbot5 = Client(
-            name="VIPAss5",
+            name="Auput5",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING5),
@@ -628,4 +628,4 @@ class Call(PyTgCalls):
             await self.play(client, update.chat_id)
 
 
-VIP = Call()
+Auput = Call()
