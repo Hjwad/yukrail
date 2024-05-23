@@ -5,8 +5,8 @@ from datetime import datetime, timedelta
 from typing import Union
 
 from pyrogram import Client
-from ntgcalls import TelegramServerError
 from pyrogram.types import InlineKeyboardMarkup
+from ntgcalls import TelegramServerError
 from pytgcalls import PyTgCalls, filters
 from pytgcalls.exceptions import (
     AlreadyJoinedError,
@@ -22,9 +22,9 @@ from pytgcalls.types import (
 from pytgcalls.types.stream import StreamAudioEnded
 
 import config
-from Auput import LOGGER, YouTube, app
-from Auput.misc import db
-from Auput.utils.database import (
+from VIPMUSIC import LOGGER, YouTube, app
+from VIPMUSIC.misc import db
+from VIPMUSIC.utils.database import (
     add_active_chat,
     add_active_video_chat,
     get_lang,
@@ -36,11 +36,11 @@ from Auput.utils.database import (
     remove_active_video_chat,
     set_loop,
 )
-from Auput.utils.exceptions import AssistantErr
-from Auput.utils.formatters import check_duration, seconds_to_min, speed_converter
-from Auput.utils.inline.play import stream_markup, telegram_markup
-from Auput.utils.stream.autoclear import auto_clean
-from Auput.utils.thumbnails import gen_thumb
+from VIPMUSIC.utils.exceptions import AssistantErr
+from VIPMUSIC.utils.formatters import check_duration, seconds_to_min, speed_converter
+from VIPMUSIC.utils.inline.play import stream_markup, telegram_markup
+from VIPMUSIC.utils.stream.autoclear import auto_clean
+from VIPMUSIC.utils.thumbnails import gen_thumb
 from strings import get_string
 
 autoend = {}
@@ -57,7 +57,7 @@ async def _clear_(chat_id):
 class Call(PyTgCalls):
     def __init__(self):
         self.userbot1 = Client(
-            name="Auput1",
+            name="VIPAss1",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING1),
@@ -67,7 +67,7 @@ class Call(PyTgCalls):
             cache_duration=100,
         )
         self.userbot2 = Client(
-            name="Auput2",
+            name="VIPAss2",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING2),
@@ -77,7 +77,7 @@ class Call(PyTgCalls):
             cache_duration=100,
         )
         self.userbot3 = Client(
-            name="Auput3",
+            name="VIPAss3",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING3),
@@ -87,7 +87,7 @@ class Call(PyTgCalls):
             cache_duration=100,
         )
         self.userbot4 = Client(
-            name="Auput4",
+            name="VIPAss4",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING4),
@@ -97,7 +97,7 @@ class Call(PyTgCalls):
             cache_duration=100,
         )
         self.userbot5 = Client(
-            name="Auput5",
+            name="VIPAss5",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING5),
@@ -209,7 +209,7 @@ class Call(PyTgCalls):
             MediaStream(
                 out,
                 audio_parameters=AudioQuality.HIGH,
-                video_parameters=VideoQuality.HD_720p,
+                video_parameters=VideoQuality.SD_480p,
                 ffmpeg_parameters=f"-ss {played} -to {duration}",
             )
             if playing[0]["streamtype"] == "video"
@@ -261,7 +261,7 @@ class Call(PyTgCalls):
             stream = MediaStream(
                 link,
                 audio_parameters=AudioQuality.HIGH,
-                video_parameters=VideoQuality.HD_720p,
+                video_parameters=VideoQuality.SD_480p,
             )
         else:
             stream = MediaStream(
@@ -280,7 +280,7 @@ class Call(PyTgCalls):
             MediaStream(
                 file_path,
                 audio_parameters=AudioQuality.HIGH,
-                video_parameters=VideoQuality.HD_720p,
+                video_parameters=VideoQuality.SD_480p,
                 ffmpeg_parameters=f"-ss {to_seek} -to {duration}",
             )
             if mode == "video"
@@ -317,14 +317,14 @@ class Call(PyTgCalls):
             stream = MediaStream(
                 link,
                 audio_parameters=AudioQuality.HIGH,
-                video_parameters=VideoQuality.HD_720p,
+                video_parameters=VideoQuality.SD_480p,
             )
         else:
             stream = (
                 MediaStream(
                     link,
                     audio_parameters=AudioQuality.HIGH,
-                    video_parameters=VideoQuality.HD_720p,
+                    video_parameters=VideoQuality.SD_480p,
                 )
                 if video
                 else MediaStream(
@@ -404,7 +404,7 @@ class Call(PyTgCalls):
                     stream = MediaStream(
                         link,
                         audio_parameters=AudioQuality.HIGH,
-                        video_parameters=VideoQuality.HD_720p,
+                        video_parameters=VideoQuality.SD_480p,
                     )
                 else:
                     stream = MediaStream(
@@ -452,7 +452,7 @@ class Call(PyTgCalls):
                     stream = MediaStream(
                         file_path,
                         audio_parameters=AudioQuality.HIGH,
-                        video_parameters=VideoQuality.HD_720p,
+                        video_parameters=VideoQuality.SD_480p,
                     )
                 else:
                     stream = MediaStream(
@@ -489,7 +489,7 @@ class Call(PyTgCalls):
                     MediaStream(
                         videoid,
                         audio_parameters=AudioQuality.HIGH,
-                        video_parameters=VideoQuality.HD_720p,
+                        video_parameters=VideoQuality.SD_480p,
                     )
                     if str(streamtype) == "video"
                     else MediaStream(
@@ -520,7 +520,7 @@ class Call(PyTgCalls):
                     stream = MediaStream(
                         queued,
                         audio_parameters=AudioQuality.HIGH,
-                        video_parameters=VideoQuality.HD_720p,
+                        video_parameters=VideoQuality.SD_480p,
                     )
                 else:
                     stream = MediaStream(
@@ -628,5 +628,4 @@ class Call(PyTgCalls):
             await self.play(client, update.chat_id)
 
 
-
-Auput = Call()
+VIP = Call()
