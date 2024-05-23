@@ -18,7 +18,7 @@ from Auput.utils.inline.play import (stream_markup,
 from Auput.utils.inline.playlist import close_markup
 from Auput.utils.pastebin import AuputBin
 from Auput.utils.stream.queue import put_queue, put_queue_index
-from Auput.utils.thumbnails import get_thumb
+from Auput.utils.thumbnails import gen_thumb
 
 
 async def stream(
@@ -104,7 +104,7 @@ async def stream(
                     "video" if video else "audio",
                     forceplay=forceplay,
                 )
-                img = await get_thumb(vidid)
+                img = await gen_thumb(vidid)
                 button = stream_markup(_, vidid, chat_id)
                 run = await app.send_photo(
                     original_chat_id,
@@ -185,7 +185,7 @@ async def stream(
                 "video" if video else "audio",
                 forceplay=forceplay,
             )
-            img = await get_thumb(vidid)
+            img = await gen_thumb(vidid)
             button = stream_markup(_, vidid, chat_id)
             run = await app.send_photo(
                 original_chat_id,
@@ -354,7 +354,7 @@ async def stream(
                 "video" if video else "audio",
                 forceplay=forceplay,
             )
-            img = await get_thumb(vidid)
+            img = await gen_thumb(vidid)
             button = telegram_markup(_, chat_id)
             run = await app.send_photo(
                 original_chat_id,
