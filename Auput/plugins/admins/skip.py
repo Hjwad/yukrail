@@ -13,7 +13,7 @@ from Auput.utils.decorators import AdminRightsCheck
 from Auput.utils.inline.play import (stream_markup,
                                           telegram_markup)
 from Auput.utils.stream.autoclear import auto_clean
-from Auput.utils.thumbnails import get_thumb
+from Auput.utils.thumbnails import gen_thumb
 
 # Commands
 SKIP_COMMAND = get_command("SKIP_COMMAND")
@@ -115,7 +115,7 @@ async def skip(cli, message: Message, _, chat_id):
         except Exception:
             return await message.reply_text(_["call_9"])
         button = telegram_markup(_, chat_id)
-        img = await get_thumb(videoid)
+        img = await gen_thumb(videoid)
         run = await message.reply_photo(
             photo=img,
             caption=_["stream_1"].format(
@@ -144,7 +144,7 @@ async def skip(cli, message: Message, _, chat_id):
         except Exception:
             return await mystic.edit_text(_["call_9"])
         button = stream_markup(_, videoid, chat_id)
-        img = await get_thumb(videoid)
+        img = await gen_thumb(videoid)
         run = await message.reply_photo(
             photo=img,
             caption=_["stream_1"].format(
@@ -202,7 +202,7 @@ async def skip(cli, message: Message, _, chat_id):
             db[chat_id][0]["markup"] = "tg"
         else:
             button = stream_markup(_, videoid, chat_id)
-            img = await get_thumb(videoid)
+            img = await gen_thumb(videoid)
             run = await message.reply_photo(
                 photo=img,
                 caption=_["stream_1"].format(
