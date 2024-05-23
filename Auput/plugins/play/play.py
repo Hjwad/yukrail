@@ -33,7 +33,7 @@ from Auput.utils.database import (
 from Auput.utils.logger import play_logs
 from config import BANNED_USERS, lyrical
 from time import time
-from strings import command 
+from strings import get_command 
 from Auput.utils.extraction import extract_user
 
 @app.on_message(
