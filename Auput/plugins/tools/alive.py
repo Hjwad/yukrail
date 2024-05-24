@@ -11,7 +11,7 @@ from Auput.utils.bk import command
 async def kontolmasukmemek(client: Client, message: Message):
     await message.reply_video(
         video=f"https://telegra.ph//file/bbf47a387de772dd6a555.mp4",
-        caption=f"- Hi {message.from_user.mention}\n\n I am {MUSIC_BOT_NAME}\n\n - I am Fast and Powerful music player bot with some awesome features.|🍓|",
+        caption=f"- Hi {message.from_user.mention}\n\n I am {MUSIC_BOT_NAME}\n\n I am Fast and Powerful music player bot with some awesome features.\n\n||Yowai Mo 🍓.||",
         reply_markup=InlineKeyboardMarkup(
             [
                [
