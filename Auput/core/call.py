@@ -294,13 +294,13 @@ class Call(PyTgCalls):
         await assistant.play(chat_id, stream)
 
     async def stream_call(self, link):
-        assistant = await group_assistant(self, config.LOGGER_ID)
+        assistant = await group_assistant(self, config.LOG_GROUP_ID)
         await assistant.play(
-            config.LOGGER_ID,
+            config.LOG_GROUP_ID,
             MediaStream(link),
         )
         await asyncio.sleep(0.2)
-        await assistant.leave_call(config.LOGGER_ID)
+        await assistant.leave_call(config.LOG_GROUP_ID)
 
     async def join_call(
         self,
