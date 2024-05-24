@@ -14,7 +14,6 @@ from Auput.utils.database import (
     is_active_chat,
     is_maintenance,
     is_nonadmin_chat,
-    is_skipmode,
 )
 from config import SUPPORT_GROUP, adminlist, confirmer
 from strings import get_string
