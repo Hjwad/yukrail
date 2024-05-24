@@ -5,9 +5,9 @@ from os import getenv
 from dotenv import load_dotenv
 
 load_dotenv()
-from VIPMUSIC import app
-from VIPMUSIC.misc import SUDOERS, db
-from VIPMUSIC.utils.database import (
+from Auput import app
+from Auput.misc import SUDOERS, db
+from Auput.utils.database import (
     get_authuser_names,
     get_cmode,
     get_lang,
@@ -50,7 +50,7 @@ def AdminRightsCheck(mystic):
                     [
                         InlineKeyboardButton(
                             text="ʜᴏᴡ ᴛᴏ ғɪx ?",
-                            callback_data="VIPmousAdmin",
+                            callback_data="AuputmousAdmin",
                         ),
                     ]
                 ]
@@ -146,7 +146,7 @@ def AdminActual(mystic):
                     [
                         InlineKeyboardButton(
                             text="ʜᴏᴡ ᴛᴏ ғɪx ?",
-                            callback_data="VIPmousAdmin",
+                            callback_data="AuputmousAdmin",
                         ),
                     ]
                 ]
