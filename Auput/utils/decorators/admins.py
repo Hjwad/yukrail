@@ -11,7 +11,6 @@ from Auput.utils.database import (
     get_authuser_names,
     get_cmode,
     get_lang,
-    get_upvote_count,
     is_active_chat,
     is_maintenance,
     is_nonadmin_chat,
