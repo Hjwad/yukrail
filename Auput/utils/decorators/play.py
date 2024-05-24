@@ -21,7 +21,7 @@ from Auput.utils.database import (
     is_maintenance,
 )
 from Auput.utils.inline.playlist import botplaylist_markup
-from config import PLAYLIST_IMG_URL, SUPPORT_group, adminlist
+from config import PLAYLIST_IMG_URL, SUPPORT_Group, adminlist
 from strings import get_string
 
 links = {}
