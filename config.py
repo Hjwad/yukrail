@@ -15,9 +15,9 @@ API_HASH = getenv("API_HASH", "")
 BOT_TOKEN = getenv("BOT_TOKEN")
 
 # Add Owner Username without @ 
-OWNER_USERNAME = getenv("OWNER_USERNAME", "MsosMbot")
+OWNER_USERNAME = getenv("OWNER_USERNAME", "SSSi5")
 # Get Your bot username
-BOT_USERNAME = getenv("BOT_USERNAME" , "NezukoMusicRobot")
+BOT_USERNAME = getenv("BOT_USERNAME" , "MsosMbot")
 
 # Database to save your chats and stats... Get MongoDB:-  https://telegra.ph/How-To-get-Mongodb-URI-04-06
 MONGO_DB_URI = getenv("MONGO_DB_URI", None)
