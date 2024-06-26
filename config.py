@@ -7,121 +7,129 @@ from pyrogram import filters
 
 load_dotenv()
 
-def getenv_int(key, default=0):
-    value = getenv(key, default)
-    try:
-        return int(value)
-    except ValueError:
-        return default
-
-def getenv_list_of_ints(key, default=""):
-    value = getenv(key, default)
-    try:
-        return list(map(int, value.split()))
-    except ValueError:
-        return list(map(int, default.split()))
-
 # Get it from my.telegram.org
-API_ID = getenv_int("API_ID")
+API_ID = int(getenv("API_ID", ""))
 API_HASH = getenv("API_HASH", "")
 
-# Get it from @Botfather in Telegram.
+## Get it from @Botfather in Telegram.
 BOT_TOKEN = getenv("BOT_TOKEN")
 
 # Add Owner Username without @ 
-OWNER_USERNAME = getenv("OWNER_USERNAME", "SSSi5")
+OWNER_USERNAME = getenv("OWNER_USERNAME", "Iamuput")
 # Get Your bot username
-BOT_USERNAME = getenv("BOT_USERNAME", "Engsosbot")
+BOT_USERNAME = getenv("BOT_USERNAME" , "NezukoMusicRobot")
 
 # Database to save your chats and stats... Get MongoDB:-  https://telegra.ph/How-To-get-Mongodb-URI-04-06
 MONGO_DB_URI = getenv("MONGO_DB_URI", None)
 
-# Custom max audio(music) duration for voice chat. Set DURATION_LIMIT in variables with your own time(mins), Default to 60 mins.
-DURATION_LIMIT_MIN = getenv_int("DURATION_LIMIT", 50000)  # Default value in Minutes
+# Custom max audio(music) duration for voice chat. set DURATION_LIMIT in variables with your own time(mins), Default to 60 mins.
+DURATION_LIMIT_MIN = int(
+    getenv("DURATION_LIMIT", "50000")
+)  # Remember to give value in Minutes
 
 # Duration Limit for downloading Songs in MP3 or MP4 format from bot
-SONG_DOWNLOAD_DURATION = getenv_int("SONG_DOWNLOAD_DURATION_LIMIT", 50000)  # Default value in Minutes
+SONG_DOWNLOAD_DURATION = int(
+    getenv("SONG_DOWNLOAD_DURATION_LIMIT", "50000")
+)  # Remember to give value in Minutes
 
 # You'll need a Private Group ID for this.
-LOG_GROUP_ID = getenv_int("LOG_GROUP_ID")
+LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", ""))
 
 # A name for your Music bot.
 MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME", "ISI GOBLOK GAUSA BEGO² AMAT")
 
 # Your User ID.
-OWNER_ID = getenv_list_of_ints("OWNER_ID", "6542112608")
+OWNER_ID = list(
+    map(int, getenv("OWNER_ID", "1843616228").split())
+)  # Input type must be interger
 
 # Get it from http://dashboard.heroku.com/account
 HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 
-# You have to Enter the app name which you gave to identify your Music Bot in Heroku.
+# You have to Enter the app name which you gave to identify your  Music Bot in Heroku.
 HEROKU_APP_NAME = getenv("HEROKU_APP_NAME")
 
 # For customized or modified Repository
-UPSTREAM_REPO = getenv("UPSTREAM_REPO", "https://github.com/Hjwad/yuk")
+UPSTREAM_REPO = getenv(
+    "UPSTREAM_REPO",
+    "https://github.com/iamuput/NezukoMusic",
+)
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "master")
 
-# GIT TOKEN (if your edited repo is private)
+# GIT TOKEN ( if your edited repo is private)
 GIT_TOKEN = getenv("GIT_TOKEN", None)
 
-COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ ! .").split())
-
-# Only Links formats are accepted for this Var value.
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/mmmsc")
-SUPPORT_GROUP = getenv("SUPPORT_GROUP", "https://t.me/lllcz")
+# Only  Links formats are  accepted for this Var value.
+SUPPORT_CHANNEL = getenv(
+    "SUPPORT_CHANNEL", "https://t.me/Flukosaa")
+SUPPORT_GROUP = getenv(
+    "SUPPORT_GROUP", "https://t.me/UputtSupport")
 
 # Set it in True if you want to leave your assistant after a certain amount of time. [Set time via AUTO_LEAVE_ASSISTANT_TIME]
-AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", "False"))
+AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", True))
 
-# Time after which your assistant account will leave chats automatically.
-AUTO_LEAVE_ASSISTANT_TIME = getenv_int("ASSISTANT_LEAVE_TIME", 80000)  # Default value in Seconds
+# Time after which you're assistant account will leave chats automatically.
+AUTO_LEAVE_ASSISTANT_TIME = int(
+    getenv("ASSISTANT_LEAVE_TIME", "500")
+)  # Remember to give value in Seconds
 
 # Time after which bot will suggest random chats about bot commands.
-AUTO_SUGGESTION_TIME = getenv_int("AUTO_SUGGESTION_TIME", 5400)  # Default value in Seconds
+AUTO_SUGGESTION_TIME = int(
+    getenv("AUTO_SUGGESTION_TIME", "5400")
+)  # Remember to give value in Seconds
 
 # Set it True if you want to delete downloads after the music playout ends from your downloads folder
-AUTO_DOWNLOADS_CLEAR = bool(getenv("AUTO_DOWNLOADS_CLEAR", "False"))
+AUTO_DOWNLOADS_CLEAR = getenv("AUTO_DOWNLOADS_CLEAR", None)
 
-# Set it True if you want the bot to suggest about bot commands to random chats of your bots.
-AUTO_SUGGESTION_MODE = bool(getenv("AUTO_SUGGESTION_MODE", "False"))
+# Set it True if you want to bot to suggest about bot commands to random chats of your bots.
+AUTO_SUGGESTION_MODE = getenv("AUTO_SUGGESTION_MODE", None)
 
 # Set it true if you want your bot to be private only [You'll need to allow CHAT_ID via /authorise command then only your bot will play music in that chat.]
-PRIVATE_BOT_MODE = bool(getenv("PRIVATE_BOT_MODE", "False"))
+PRIVATE_BOT_MODE = getenv("PRIVATE_BOT_MODE", None)
 
 # Time sleep duration For Youtube Downloader
-YOUTUBE_DOWNLOAD_EDIT_SLEEP = getenv_int("YOUTUBE_EDIT_SLEEP", 3)
+YOUTUBE_DOWNLOAD_EDIT_SLEEP = int(getenv("YOUTUBE_EDIT_SLEEP", "3"))
 
 # Time sleep duration For Telegram Downloader
-TELEGRAM_DOWNLOAD_EDIT_SLEEP = getenv_int("TELEGRAM_EDIT_SLEEP", 5)
+TELEGRAM_DOWNLOAD_EDIT_SLEEP = int(getenv("TELEGRAM_EDIT_SLEEP", "5"))
 
 # Your Github Repo.. Will be shown on /start Command
 GITHUB_REPO = getenv("GITHUB_REPO", None)
 
 # Spotify Client.. Get it from https://developer.spotify.com/dashboard
-SPOTIFY_CLIENT_ID = getenv("SPOTIFY_CLIENT_ID", "19609edb1b9f4ed7be0c8c1342039362")
-SPOTIFY_CLIENT_SECRET = getenv("SPOTIFY_CLIENT_SECRET", "409e31d3ddd64af08cfcc3b0f064fcbe")
+SPOTIFY_CLIENT_ID = getenv("SPOTIFY_CLIENT_ID", None)
+SPOTIFY_CLIENT_SECRET = getenv("SPOTIFY_CLIENT_SECRET", None)
 
 # Maximum number of video calls allowed on bot. You can later set it via /set_video_limit on telegram
-VIDEO_STREAM_LIMIT = getenv_int("VIDEO_STREAM_LIMIT", 4)
+VIDEO_STREAM_LIMIT = int(getenv("VIDEO_STREAM_LIMIT", "4"))
 
 # Maximum Limit Allowed for users to save playlists on bot's server
-SERVER_PLAYLIST_LIMIT = getenv_int("SERVER_PLAYLIST_LIMIT", 15)
+SERVER_PLAYLIST_LIMIT = int(getenv("SERVER_PLAYLIST_LIMIT", "15"))
 
-# Maximum limit for fetching playlist's track from youtube, spotify, apple links.
-PLAYLIST_FETCH_LIMIT = getenv_int("PLAYLIST_FETCH_LIMIT", 15)
+# MaximuM limit for fetching playlist's track from youtube, spotify, apple links.
+PLAYLIST_FETCH_LIMIT = int(getenv("PLAYLIST_FETCH_LIMIT", "15"))
 
 # Cleanmode time after which bot will delete its old messages from chats
-CLEANMODE_DELETE_MINS = getenv_int("CLEANMODE_MINS", 5)  # Default value in Minutes
+CLEANMODE_DELETE_MINS = int(
+    getenv("CLEANMODE_MINS", "5")
+)  # Remember to give value in Seconds
 
-# Telegram audio and video file size limit
-TG_AUDIO_FILESIZE_LIMIT = getenv_int("TG_AUDIO_FILESIZE_LIMIT", 2147483648)  # Default value in bytes
-TG_VIDEO_FILESIZE_LIMIT = getenv_int("TG_VIDEO_FILESIZE_LIMIT", 2147483648)  # Default value in bytes
 
-# Check out https://www.gbmb.org/mb-to-bytes for converting MB to bytes
+# Telegram audio  and video file size limit
+
+TG_AUDIO_FILESIZE_LIMIT = int(
+    getenv("TG_AUDIO_FILESIZE_LIMIT", "2147483648")
+)  # Remember to give value in bytes
+
+TG_VIDEO_FILESIZE_LIMIT = int(
+    getenv("TG_VIDEO_FILESIZE_LIMIT", "2147483648")
+)  # Remember to give value in bytes
+
+# Chceckout https://www.gbmb.org/mb-to-bytes  for converting mb to bytes
 
 # If you want your bot to setup the commands automatically in the bot's menu set it to true.
 # Refer to https://i.postimg.cc/Bbg3LQTG/image.png
-SET_CMDS = bool(getenv("SET_CMDS", False))
+SET_CMDS = getenv("SET_CMDS", False)
 
 # You'll need a PyrogramV2 String Session for these vars.
 STRING1 = getenv("STRING_SESSION", None)
@@ -130,8 +138,6 @@ STRING3 = getenv("STRING_SESSION3", None)
 STRING4 = getenv("STRING_SESSION4", None)
 STRING5 = getenv("STRING_SESSION5", None)
 
-COMMAND_PREFIXES.append('')
-OWNER_ID.append(1439222689)
 
 ### DONT TOUCH or EDIT codes after this line
 BANNED_USERS = filters.user()
@@ -146,20 +152,21 @@ clean = {}
 
 autoclean = []
 
+
 # Images
-START_IMG_URL = "https://telegra.ph/file/08999e4fbc71e95139ace.jpg"
-PING_IMG_URL = "https://telegra.ph/file/08999e4fbc71e95139ace.jpg"
-PLAYLIST_IMG_URL = "https://telegra.ph/file/08999e4fbc71e95139ace.jpg"
-GLOBAL_IMG_URL = "https://telegra.ph/file/08999e4fbc71e95139ace.jpg"
-STATS_IMG_URL = "https://telegra.ph/file/08999e4fbc71e95139ace.jpg"
-TELEGRAM_AUDIO_URL = "https://telegra.ph/file/08999e4fbc71e95139ace.jpg"
-TELEGRAM_VIDEO_URL = "https://telegra.ph/file/08999e4fbc71e95139ace.jpg"
-STREAM_IMG_URL = "https://telegra.ph/file/08999e4fbc71e95139ace.jpg"
-SOUNCLOUD_IMG_URL = "https://telegra.ph/file/08999e4fbc71e95139ace.jpg"
-YOUTUBE_IMG_URL = "https://telegra.ph/file/08999e4fbc71e95139ace.jpg"
-SPOTIFY_ARTIST_IMG_URL = "https://telegra.ph/file/08999e4fbc71e95139ace.jpg"
-SPOTIFY_ALBUM_IMG_URL = "https://telegra.ph/file/08999e4fbc71e95139ace.jpg"
-SPOTIFY_PLAYLIST_IMG_URL = "https://telegra.ph/file/08999e4fbc71e95139ace.jpg"
+START_IMG_URL = "https://telegra.ph//file/bbdab35972d61a0cae983.jpg"
+PING_IMG_URL = "https://telegra.ph//file/e14488acaa70ae35d2506.jpg"
+PLAYLIST_IMG_URL = "https://telegra.ph//file/dfca5abcdca4dea7ec09c.jpg"
+GLOBAL_IMG_URL = "https://telegra.ph//file/bbdab35972d61a0cae983.jpg"
+STATS_IMG_URL = "https://telegra.ph//file/6be6db8050a16fe945184.jpg"
+TELEGRAM_AUDIO_URL = "https://telegra.ph//file/e3b18a8f57f197e623794.jpg"
+TELEGRAM_VIDEO_URL = "https://telegra.ph//file/e3b18a8f57f197e623794.jpg"
+STREAM_IMG_URL = "https://telegra.ph//file/e3b18a8f57f197e623794.jpg"
+SOUNCLOUD_IMG_URL = "https://telegra.ph//file/e3b18a8f57f197e623794.jpg"
+YOUTUBE_IMG_URL = "https://telegra.ph//file/e3b18a8f57f197e623794.jpg"
+SPOTIFY_ARTIST_IMG_URL = "https://telegra.ph//file/dfca5abcdca4dea7ec09c.jpg"
+SPOTIFY_ALBUM_IMG_URL = "https://telegra.ph//file/bbdab35972d61a0cae983.jpg"
+SPOTIFY_PLAYLIST_IMG_URL = "https://telegra.ph//file/6be6db8050a16fe945184.jpg"
 
 
 def time_to_seconds(time):
