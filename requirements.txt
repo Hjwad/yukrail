@@ -41,6 +41,7 @@ spotipy
 tgcrypto
 telegraph==2.2.0
 unidecode
+urllib3==1.26.8
 yt-dlp
 #git+https://github.com/joetats/youtube_search@master
 #git+https://github.com/alexmercerind/youtube-search-python@main
