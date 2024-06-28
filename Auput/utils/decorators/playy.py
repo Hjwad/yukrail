@@ -8,20 +8,34 @@
 # All rights reserved.
 #
 
+import asyncio
+from pyrogram import Client
+from pyrogram.enums import ChatMemberStatus
+from pyrogram.errors import (
+    ChatAdminRequired,
+    InviteRequestSent,
+    UserAlreadyParticipant,
+    UserNotParticipant,
+)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from config import PLAYLIST_IMG_URL, PRIVATE_BOT_MODE, adminlist
-from strings import get_string
 from Auput import YouTube, app
 from Auput.misc import SUDOERS
-from Auput.utils.database import (get_cmode, get_lang,
-                                       get_playmode, get_playtype,
-                                       is_active_chat,
-                                       is_commanddelete_on,
-                                       is_served_private_chat)
-from Auput.utils.database.memorydatabase import is_maintenance
+from Auput.utils.database import (
+    get_assistant,
+    get_cmode,
+    get_lang,
+    get_playmode,
+    get_playtype,
+    is_active_chat,
+    is_maintenance,
+)
 from Auput.utils.inline.playlist import botplaylist_markup
+from config import PLAYLIST_IMG_URL, SUPPORT_GROUP, adminlist
+from strings import get_string
 
+links = {}
+clinks = {}
 
 def PlayWrapper(command):
     async def wrapper(client, message):
