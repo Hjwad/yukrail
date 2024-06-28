@@ -1,12 +1,13 @@
 #
-# Copyright (C) 2021-present by TeamAuput@Github, < https://github.com/TeamAuput >.
+# Copyright (C) 2023-2024 by AuputOwner@Github, < https://github.com/AuputOwner >.
 #
-# This file is part of < https://github.com/TeamAuput/Bot > project,
+# This file is part of < https://github.com/AuputOwner/AuputBot > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/TeamAuput/AuputBot/blob/master/LICENSE >
+# Please see < https://github.com/AuputOwner/AuputBot/blob/master/LICENSE >
 #
 # All rights reserved.
 #
+
 
 import random
 import string
@@ -27,7 +28,7 @@ from Auput.utils import seconds_to_min, time_to_seconds
 from Auput.utils.channelplay import get_channeplayCB
 from Auput.utils.database import is_video_allowed
 from Auput.utils.decorators.language import languageCB
-from Auput.utils.decorators.playy import PlayWrapper
+from Auput.utils.decorators.play import PlayWrapper
 from Auput.utils.formatters import formats
 from Auput.utils.inline.play import (livestream_markup,
                                           playlist_markup,
@@ -41,7 +42,7 @@ PLAY_COMMAND = get_command("PLAY_COMMAND")
 
 
 @app.on_message(
-    filters.command(["تشغيل","غني"],"")
+    filters.command(["شغل","تشغيل","/play"],"")
     & filters.channel
 )
 @PlayWrapper
@@ -63,8 +64,8 @@ async def play_commnd(
     slider = None
     plist_type = None
     spotify = None
-    user_id = message.from_user
-    user_name = message.from_user
+    user_id = None
+    user_name = None
     audio_telegram = (
         (
             message.reply_to_message.audio
@@ -118,6 +119,7 @@ async def play_commnd(
                     forceplay=fplay,
                 )
             except Exception as e:
+                print(f"Error: {e}")
                 ex_type = type(e).__name__
                 err = (
                     e
@@ -168,6 +170,7 @@ async def play_commnd(
                     forceplay=fplay,
                 )
             except Exception as e:
+                print(f"Error: {e}")
                 ex_type = type(e).__name__
                 err = (
                     e
@@ -187,7 +190,7 @@ async def play_commnd(
                         message.from_user.id,
                     )
                 except Exception as e:
-                    print(e)
+                    print(f"Error: {e}")
                     return await mystic.edit_text(_["play_3"])
                 streamtype = "playlist"
                 plist_type = "yt"
@@ -201,7 +204,7 @@ async def play_commnd(
                 try:
                     details, track_id = await YouTube.track(url)
                 except Exception as e:
-                    print(e)
+                    print(f"Error: {e}")
                     return await mystic.edit_text(_["play_3"])
                 streamtype = "youtube"
                 img = details["thumb"]
@@ -292,6 +295,7 @@ async def play_commnd(
             try:
                 details, track_id = await Resso.track(url)
             except Exception as e:
+                print(f"Error: {e}")
                 return await mystic.edit_text(_["play_3"])
             streamtype = "youtube"
             img = details["thumb"]
@@ -324,6 +328,7 @@ async def play_commnd(
                     forceplay=fplay,
                 )
             except Exception as e:
+                print(f"Error: {e}")
                 ex_type = type(e).__name__
                 err = (
                     e
@@ -344,6 +349,7 @@ async def play_commnd(
                     "Please turn on Voice Chat.. Bot is not able to stream urls..",
                 )
             except Exception as e:
+                print(f"Error: {e}")
                 return await mystic.edit_text(
                     _["general_3"].format(type(e).__name__)
                 )
@@ -362,6 +368,7 @@ async def play_commnd(
                     forceplay=fplay,
                 )
             except Exception as e:
+                print(f"Error: {e}")
                 ex_type = type(e).__name__
                 err = (
                     e
@@ -429,6 +436,7 @@ async def play_commnd(
                 forceplay=fplay,
             )
         except Exception as e:
+            print(f"Error: {e}")
             ex_type = type(e).__name__
             err = (
                 e
@@ -574,6 +582,7 @@ async def play_music(client, CallbackQuery, _):
             forceplay=ffplay,
         )
     except Exception as e:
+        print(f"Error: {e}")
         ex_type = type(e).__name__
         err = (
             e
@@ -684,6 +693,7 @@ async def play_playlists_command(client, CallbackQuery, _):
             forceplay=ffplay,
         )
     except Exception as e:
+        print(f"Error: {e}")
         ex_type = type(e).__name__
         err = (
             e
@@ -765,4 +775,4 @@ async def slider_queries(client, CallbackQuery, _):
         )
         return await CallbackQuery.edit_message_media(
             media=med, reply_markup=InlineKeyboardMarkup(buttons)
-)
+        )
