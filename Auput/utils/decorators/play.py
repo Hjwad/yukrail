@@ -28,6 +28,44 @@ links = {}
 clinks = {}
 
 
+import asyncio
+from pyrogram import Client
+from pyrogram.enums import ChatMemberStatus
+from pyrogram.errors import (
+    ChatAdminRequired,
+    InviteRequestSent,
+    UserAlreadyParticipant,
+    UserNotParticipant,
+)
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
+from Auput import YouTube, app
+from Auput.misc import SUDOERS
+from Auput.utils.database import (
+    get_assistant,
+    get_cmode,
+    get_lang,
+    get_playmode,
+    get_playtype,
+    is_active_chat,
+    is_maintenance,
+)
+from Auput.utils.inline.playlist import botplaylist_markup
+from config import PLAYLIST_IMG_URL, SUPPORT_GROUP, adminlist
+from strings import get_string
+
+links = {}
+clinks = {}
+
+
+def is_valid_invitelink(link):
+    return link.startswith("https://t.me/") or link.startswith("t.me/")
+
+
+def is_valid_chat_id(chat_id):
+    return isinstance(chat_id, int) and chat_id < 0
+
+
 def PlayWrapper(command):
     async def wrapper(client, message):
         language = await get_lang(message.chat.id)
@@ -54,8 +92,8 @@ def PlayWrapper(command):
 
         try:
             await message.delete()
-        except:
-            pass
+        except Exception as e:
+            print(f"Error deleting message: {e}")
 
         audio_telegram = (
             (message.reply_to_message.audio or message.reply_to_message.voice)
@@ -80,16 +118,18 @@ def PlayWrapper(command):
                 )
         if message.command[0][0] == "c":
             chat_id = await get_cmode(message.chat.id)
-            if chat_id is None:
+            if not is_valid_chat_id(chat_id):
                 return await message.reply_text(_["setting_12"])
             try:
                 chat = await app.get_chat(chat_id)
-            except:
+            except Exception as e:
+                print(f"Error getting chat: {e}")
                 return await message.reply_text(_["cplay_4"])
             channel = chat.title
         else:
             chat_id = message.chat.id
             channel = None
+
         playmode = await get_playmode(message.chat.id)
         playty = await get_playtype(message.chat.id)
         if playty != "Everyone":
@@ -138,8 +178,8 @@ def PlayWrapper(command):
                         invitelink = message.chat.username
                         try:
                             await userbot.resolve_peer(invitelink)
-                        except:
-                            pass
+                        except Exception as e:
+                            print(f"Error resolving peer by username: {e}")
                     else:
                         try:
                             invitelink = await app.export_chat_invite_link(chat_id)
@@ -178,8 +218,8 @@ def PlayWrapper(command):
 
                 try:
                     await userbot.resolve_peer(chat_id)
-                except:
-                    pass
+                except Exception as e:
+                    print(f"Error resolving peer for chat_id: {e}")
 
         return await command(
             client,
@@ -194,6 +234,44 @@ def PlayWrapper(command):
         )
 
     return wrapper
+
+
+import asyncio
+from pyrogram import Client
+from pyrogram.enums import ChatMemberStatus
+from pyrogram.errors import (
+    ChatAdminRequired,
+    InviteRequestSent,
+    UserAlreadyParticipant,
+    UserNotParticipant,
+)
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
+from Auput import YouTube, app
+from Auput.misc import SUDOERS
+from Auput.utils.database import (
+    get_assistant,
+    get_cmode,
+    get_lang,
+    get_playmode,
+    get_playtype,
+    is_active_chat,
+    is_maintenance,
+)
+from Auput.utils.inline.playlist import botplaylist_markup
+from config import PLAYLIST_IMG_URL, SUPPORT_GROUP, adminlist
+from strings import get_string
+
+links = {}
+clinks = {}
+
+
+def is_valid_invitelink(link):
+    return link.startswith("https://t.me/") or link.startswith("t.me/")
+
+
+def is_valid_chat_id(chat_id):
+    return isinstance(chat_id, int) and chat_id < 0
 
 
 def CPlayWrapper(command):
@@ -223,8 +301,8 @@ def CPlayWrapper(command):
 
         try:
             await message.delete()
-        except:
-            pass
+        except Exception as e:
+            print(f"Error deleting message: {e}")
 
         audio_telegram = (
             (message.reply_to_message.audio or message.reply_to_message.voice)
@@ -249,16 +327,18 @@ def CPlayWrapper(command):
                 )
         if message.command[0][0] == "c":
             chat_id = await get_cmode(message.chat.id)
-            if chat_id is None:
+            if not is_valid_chat_id(chat_id):
                 return await message.reply_text(_["setting_7"])
             try:
                 chat = await client.get_chat(chat_id)
-            except:
+            except Exception as e:
+                print(f"Error getting chat: {e}")
                 return await message.reply_text(_["cplay_4"])
             channel = chat.title
         else:
             chat_id = message.chat.id
             channel = None
+
         playmode = await get_playmode(message.chat.id)
         playty = await get_playtype(message.chat.id)
         if playty != "Everyone":
@@ -307,8 +387,8 @@ def CPlayWrapper(command):
                         invitelink = message.chat.username
                         try:
                             await userbot.resolve_peer(invitelink)
-                        except:
-                            pass
+                        except Exception as e:
+                            print(f"Error resolving peer by username: {e}")
                     else:
                         try:
                             invitelink = await client.export_chat_invite_link(chat_id)
@@ -347,8 +427,8 @@ def CPlayWrapper(command):
 
                 try:
                     await userbot.resolve_peer(chat_id)
-                except:
-                    pass
+                except Exception as e:
+                    print(f"Error resolving peer for chat_id: {e}")
 
         return await command(
             client,
